@@ -55,9 +55,11 @@ public class LoginController extends AbstractController {
                 HttpSession session = request.getSession();
                 session.setAttribute(Constants.KEY_USER, user);
                 jump(Constants.INDEX_JSP, request, response);
+                return;
             }
         } catch (Exception e) {
             jumpError(Constants.INDEX_JSP, e.getMessage(), request, response);
         }
+        jumpError(Constants.INDEX_JSP, Constants.ERR_LOGIN, request, response);
     }
 }
