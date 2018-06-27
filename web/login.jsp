@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import = "by.itClass.constants.Constants" %>
 <html>
@@ -13,8 +12,7 @@
     <input type="password" name="<%= Constants.KEY_PASSWORD%>" value="" placeholder="password">
     <input type="submit" name="Log in">
 
-    </form>
-
 </form>
+
 </body>
 </html>
