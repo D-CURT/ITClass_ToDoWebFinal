@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ToDeWebFinal.iml" filepath="$PROJECT_DIR$/ToDeWebFinal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ToDoWebFinal.iml" filepath="$PROJECT_DIR$/ToDoWebFinal.iml" />
     </modules>
   </component>
 </project>

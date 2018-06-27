@@ -3,11 +3,13 @@ package by.itClass.controller;
 import by.itClass.constants.Constants;
 import by.itClass.factory.UserFactory;
 import by.itClass.interfaces.IUserDAO;
+import by.itClass.model.beans.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/login")
@@ -47,5 +49,15 @@ public class LoginController extends AbstractController {
             return;
         }
         IUserDAO userDAO = UserFactory.getClassFromFactory();
+        User user = new User(login);
+        try {
+            if (userDAO.isFoundUser(user, password)) {
+                HttpSession session = request.getSession();
+                session.setAttribute(Constants.KEY_USER, user);
+                jump(Constants.INDEX_JSP, request, response);
+            }
+        } catch (Exception e) {
+            jumpError(Constants.INDEX_JSP, e.getMessage(), request, response);
+        }
     }
 }

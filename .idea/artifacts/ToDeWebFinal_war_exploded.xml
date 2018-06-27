@@ -2,10 +2,10 @@
   <artifact type="exploded-war" name="ToDeWebFinal:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/ToDeWebFinal_war_exploded</output-path>
     <root id="root">
-      <element id="javaee-facet-resources" facet="ToDeWebFinal/web/Web" />
+      <element id="javaee-facet-resources" facet="ToDoWebFinal/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="ToDeWebFinal" />
+          <element id="module-output" name="ToDoWebFinal" />
         </element>
       </element>
     </root>
