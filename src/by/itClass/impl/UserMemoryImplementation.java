@@ -7,31 +7,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserMemoryImplementation implements IUserDAO {
-    public Map<User, String> users = new HashMap<>();
+    public static Map<User, String> users = new HashMap<>();
     static {
-        users.put()
-    }
-    public User getUser(String login, String password) {
-        Role role = null;
-        if ("sys".equals(login) && "111".equals(password)) {
-            role = role.ADMIN;
-        } else {
-            if ("boss".equals(login) && "222".equals(password)) {
-                role = role.USER;
-            } else {
-                role = role.VISITER;
-            }
-        }
-        return new User(login, role);
+        users.put(new User("Decurt", "Alex", "Decurt@mail.ru"), "111");
     }
 
     @Override
     public boolean isFoundUser(User user, String password) throws Exception {
+        String pass = users.get(user);
+        if (pass != null) {
+            return password.equals(pass);
+        }
         return false;
     }
 
     @Override
     public boolean addUser(User user, String password) throws Exception {
+        if (!isFoundLogin(user)) {
+            users.put(user, password);
+        }
+        return false;
+    }
+
+    private boolean isFoundLogin(User user) {
+        if (users.get(user) != null) return true;
         return false;
     }
 }
