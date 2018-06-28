@@ -1,6 +1,5 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@page import="by.itClass.impl.UserMemoryImplementation" %>
 <html>
 <head>
     <title>Header</title>
@@ -11,7 +10,7 @@
         <th>
             <p>
                 <c:choose>
-                    <c:when test="${!UserMemoryImplementation.isFoundLogin(user)}">
+                    <c:when test="${user.login == null}">
                         <c:out value="User: guest"/>
                     </c:when>
                     <c:otherwise>

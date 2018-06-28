@@ -30,7 +30,7 @@ public class UserMemoryImplementation implements IUserDAO {
         return false;
     }
 
-    public static boolean isFoundLogin(User user) {
+    private boolean isFoundLogin(User user) {
         if (users.get(user) != null) return true;
         return false;
     }
