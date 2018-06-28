@@ -9,18 +9,18 @@
 <table>
     <tr>
         <th>
-            <p>User:
+            <p>
                 <c:choose>
                     <c:when test="${!UserMemoryImplementation.isFoundLogin(user)}">
-                        <c:out value="guest"/>
+                        <c:out value="User: guest"/>
                     </c:when>
                     <c:otherwise>
                         <c:choose>
                             <c:when test="${'sys'.equals(user.login)}">
-                                <c:out value="ADMINISTRATOR"/>
+                                <c:out value="ADMINISTRATOR: ${user.login}"/>
                             </c:when>
                             <c:otherwise>
-                                <c:out value="${user.login}"/>
+                                <c:out value="User: ${user.login}"/>
                             </c:otherwise>
                         </c:choose>
                     </c:otherwise>
