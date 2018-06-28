@@ -25,6 +25,7 @@ public class UserMemoryImplementation implements IUserDAO {
     public boolean addUser(User user, String password) throws Exception {
         if (!isFoundLogin(user)) {
             users.put(user, password);
+            return true;
         }
         return false;
     }
