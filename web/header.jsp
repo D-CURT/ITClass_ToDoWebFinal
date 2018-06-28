@@ -8,23 +8,21 @@
 <table>
     <tr>
         <th>
-            <p>
-                <c:choose>
-                    <c:when test="${user.login == null}">
-                        <c:out value="User: guest"/>
-                    </c:when>
-                    <c:otherwise>
-                        <c:choose>
-                            <c:when test="${'sys'.equals(user.login)}">
-                                <c:out value="ADMINISTRATOR: ${user.login}"/>
-                            </c:when>
-                            <c:otherwise>
-                                <c:out value="User: ${user.login}"/>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:otherwise>
-                </c:choose>
-            </p>
+            <c:choose>
+                <c:when test="${user.login == null}">
+                    <c:out value="User: guest"/>
+                </c:when>
+                <c:otherwise>
+                    <c:choose>
+                        <c:when test="${'sys'.equals(user.login)}">
+                            <c:out value="ADMINISTRATOR: ${user.login}"/>
+                        </c:when>
+                        <c:otherwise>
+                            <c:out value="User: ${user.login}"/>
+                        </c:otherwise>
+                    </c:choose>
+                </c:otherwise>
+            </c:choose>
         </th>
         <th>
             <a <c:if test="${user.login != null}">hidden</c:if> href="login.jsp">Login</a>
