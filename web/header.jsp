@@ -33,6 +33,9 @@
         <th>
             <a href="registration.jsp">Registration</a>
         </th>
+        <th>
+            <a href="<c:url value='/logout'/>">Logout</a>
+        </th>
     </tr>
 </table>
 

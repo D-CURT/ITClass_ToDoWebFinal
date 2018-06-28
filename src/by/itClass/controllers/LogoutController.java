@@ -17,6 +17,6 @@ public class LogoutController extends AbstractController {
         session.invalidate();
         System.out.println();
 
-        response.sendRedirect(Constants.LOGOUT_INDEX_JSP);
+        response.sendRedirect(Constants.INDEX_JSP);
     }
 }
