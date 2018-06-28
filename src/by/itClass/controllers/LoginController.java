@@ -1,4 +1,4 @@
-package by.itClass.controller;
+package by.itClass.controllers;
 
 import by.itClass.constants.Constants;
 import by.itClass.factory.UserFactory;
