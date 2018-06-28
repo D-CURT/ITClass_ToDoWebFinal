@@ -9,7 +9,7 @@ import java.util.Map;
 public class UserMemoryImplementation implements IUserDAO {
     public static Map<User, String> users = new HashMap<>();
     static {
-        users.put(new User("Decurt", "Alex", "Decurt@mail.ru"), "111");
+        users.put(new User("sys", "Alex", "Decurt@mail.ru"), "111");
     }
 
     @Override
@@ -29,7 +29,7 @@ public class UserMemoryImplementation implements IUserDAO {
         return false;
     }
 
-    private boolean isFoundLogin(User user) {
+    public static boolean isFoundLogin(User user) {
         if (users.get(user) != null) return true;
         return false;
     }

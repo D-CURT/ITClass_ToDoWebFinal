@@ -10,11 +10,11 @@
 
 <form name="loginForm" action="<c:url value='/login'/>" method="POST">
     <h1>Login</h1>
-    <p style="color: red">${errorMessage}</p>
     <hr>
     <input type="text" name="<%= Constants.KEY_LOGIN%>" value="" placeholder="login">
     <input type="password" name="<%= Constants.KEY_PASSWORD%>" value="" placeholder="password">
-    <input type="submit" name="Log in">
+    <input type="submit" name="Sign in" value="Sign in">
+    <hr>
 
 </form>
 

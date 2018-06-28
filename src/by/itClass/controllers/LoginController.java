@@ -43,6 +43,10 @@ public class LoginController extends AbstractController {
             jumpError(Constants.INDEX_JSP, Constants.ERR_HULL, request, response);
             return;
         }
+        if (Constants.KEY_EMPTY.equals(login) || Constants.KEY_EMPTY.equals(password)) {
+            jumpError(Constants.INDEX_JSP, Constants.ERR_HULL, request, response);
+            return;
+        }
         login = login.trim();
         if (Constants.KEY_EMPTY.equals(login)) {
             jumpError(Constants.INDEX_JSP, Constants.KEY_EMPTY, request, response);

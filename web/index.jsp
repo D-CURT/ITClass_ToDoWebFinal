@@ -10,7 +10,7 @@
    <%@include file="header.jsp"%>
   <hr>
    <c:if test="${not empty errorMessage}">
-     <c:out value="${errorMessage}"/>
+     <p style="color: red"><c:out value="${errorMessage}"/></p>
    </c:if>
   Application tools
   <hr>
