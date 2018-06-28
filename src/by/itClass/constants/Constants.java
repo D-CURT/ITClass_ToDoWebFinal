@@ -11,7 +11,7 @@ public final class Constants {
 
 
     //Application constants
-    public static final String INDEX_JSP = "/index/jsp";
+    public static final String INDEX_JSP = "/index.jsp";
     public static final String LOGOUT_INDEX_JSP = "/ToDoWebFinal/index.jsp";
 
     public static final String ERR_HULL = "Login or password are absent";

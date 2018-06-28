@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 <%@ page import = "by.itClass.constants.Constants" %>
 <html>
 <head>
@@ -6,7 +8,7 @@
 </head>
 <body>
 
-<form name="loginForm" action='<c:url value="/login">' method="POST">
+<form name="loginForm" action="<c:url value='/login'/>" method="POST">
     <h1>Login</h1>
     <input type="text" name="<%= Constants.KEY_LOGIN%>" value="" placeholder="login">
     <input type="password" name="<%= Constants.KEY_PASSWORD%>" value="" placeholder="password">
