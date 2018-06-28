@@ -27,13 +27,13 @@
             </p>
         </th>
         <th>
-            <a href="login.jsp">Login</a>
+            <a <c:if test="${user.login != null}">hidden</c:if> href="login.jsp">Login</a>
         </th>
         <th>
-            <a href="registration.jsp">Registration</a>
+            <a <c:if test="${user.login != null}">hidden</c:if> href="registration.jsp">Registration</a>
         </th>
         <th>
-            <a href="<c:url value='/logout'/>">Logout</a>
+            <a <c:if test="${user.login == null}">hidden</c:if> href="<c:url value='/logout'/>">Logout</a>
         </th>
     </tr>
 </table>
