@@ -1,6 +1,5 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import = "by.itClass.constants.Constants" %>
 <%@page import="by.itClass.impl.UserMemoryImplementation" %>
 <html>
 <head>
@@ -16,7 +15,14 @@
                         <c:out value="guest"/>
                     </c:when>
                     <c:otherwise>
-                        <c:out value="${user.login}"/>
+                        <c:choose>
+                            <c:when test="${'sys'.equals(user.login)}">
+                                <c:out value="ADMINISTRATOR"/>
+                            </c:when>
+                            <c:otherwise>
+                                <c:out value="${user.login}"/>
+                            </c:otherwise>
+                        </c:choose>
                     </c:otherwise>
                 </c:choose>
             </p>

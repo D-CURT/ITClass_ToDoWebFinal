@@ -25,6 +25,11 @@ public class RegistrationController extends AbstractController {
             jumpError(Constants.INDEX_JSP, Constants.ERR_HULL, request, response);
             return;
         }
+        if (Constants.KEY_EMPTY.equals(login) || Constants.KEY_EMPTY.equals(password)
+                || Constants.KEY_EMPTY.equals(firstName) || Constants.KEY_EMPTY.equals(email)) {
+            jumpError(Constants.INDEX_JSP, Constants.ERR_REG_EMPTY, request, response);
+            return;
+        }
         IUserDAO userDAO = UserFactory.getClassFromFactory();
         User user = new User(login, firstName, email);
         try {
