@@ -44,14 +44,10 @@ public class LoginController extends AbstractController {
             return;
         }
         if (Constants.KEY_EMPTY.equals(login) || Constants.KEY_EMPTY.equals(password)) {
-            jumpError(Constants.INDEX_JSP, Constants.ERR_HULL, request, response);
+            jumpError(Constants.INDEX_JSP, Constants.ERR_EMPTY, request, response);
             return;
         }
         login = login.trim();
-        if (Constants.KEY_EMPTY.equals(login)) {
-            jumpError(Constants.INDEX_JSP, Constants.KEY_EMPTY, request, response);
-            return;
-        }
         IUserDAO userDAO = UserFactory.getClassFromFactory();
         User user = new User(login);
         try {

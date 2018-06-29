@@ -12,11 +12,11 @@ public final class Constants {
 
     //Application constants
     public static final String INDEX_JSP = "/index.jsp";
-    public static final String LOGOUT_INDEX_JSP = "/ToDoWebFinal/index.jsp";
+    /*public static final String LOGOUT_INDEX_JSP = "/ToDoWebFinal/index.jsp";*/
 
     public static final String ERR_HULL = "Login or password are absent";
-    public static final String ERR_EMPTY = "Login is empty";
-    public static final String ERR_LOGIN = "Incorrect login of password";
+    public static final String ERR_EMPTY = "Login or password are empty";
+    public static final String ERR_LOGIN = "Incorrect login or password";
     public static final String ERR_REG_EMPTY = "Some registration field is empty";
 
     public static final String KEY_EMPTY = "";
