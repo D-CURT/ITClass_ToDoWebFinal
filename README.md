@@ -1,1 +1,3 @@
-To do web application
+To do web application.
+Usability:
+Login, logout, registration;
