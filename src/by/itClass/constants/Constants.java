@@ -18,6 +18,7 @@ public final class Constants {
     public static final String ERR_EMPTY = "Login or password are empty";
     public static final String ERR_LOGIN = "Incorrect login or password";
     public static final String ERR_REG_EMPTY = "Some registration field is empty";
+    public static final String ERR_REG_LOGIN = "The login already in use.";
 
     public static final String KEY_EMPTY = "";
     public static final String KEY_USER = "user";

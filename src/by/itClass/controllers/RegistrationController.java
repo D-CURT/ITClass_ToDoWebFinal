@@ -34,8 +34,8 @@ public class RegistrationController extends AbstractController {
         User user = new User(login, firstName, email);
         try {
             if (userDAO.addUser(user, password)) {
-                HttpSession session = request.getSession();
-                session.setAttribute(Constants.KEY_USER, user);
+                /*HttpSession session = request.getSession();
+                session.setAttribute(Constants.KEY_USER, user);*/
                 jump(Constants.INDEX_JSP, request, response);
                 return;
             }
@@ -43,5 +43,6 @@ public class RegistrationController extends AbstractController {
             jumpError(Constants.INDEX_JSP, e.getMessage(), request, response);
             return;
         }
+        jumpError(Constants.INDEX_JSP, Constants.ERR_REG_LOGIN, request, response);
     }
 }
