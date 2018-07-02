@@ -4,7 +4,7 @@ public final class Constants {
     //JSP constants
     public static final String ERR_ATR_MESSAGE = "errorMessage";
 
-    public static final String KEY_LOGIN = "user";
+    public static final String KEY_LOGIN = "login";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_FIRST_NAME = "firstName";
     public static final String KEY_EMAIL = "email";
@@ -13,7 +13,7 @@ public final class Constants {
     //Application constants
     public static final String INDEX_JSP = "/index.jsp";
 
-    public static final String ERR_HULL = "Login or password are absent";
+    public static final String ERR_NULL = "Login or password are absent";
     public static final String ERR_EMPTY = "Login or password are empty";
     public static final String ERR_LOGIN = "Incorrect login or password";
     public static final String ERR_REG_EMPTY = "Some registration field is empty";

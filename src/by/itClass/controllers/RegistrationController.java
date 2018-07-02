@@ -22,7 +22,7 @@ public class RegistrationController extends AbstractController {
         String firstName = request.getParameter(Constants.KEY_FIRST_NAME);
         String email = request.getParameter(Constants.KEY_EMAIL);
         if (login == null || password == null || firstName == null || email == null) {
-            jumpError(Constants.INDEX_JSP, Constants.ERR_HULL, request, response);
+            jumpError(Constants.INDEX_JSP, Constants.ERR_NULL, request, response);
             return;
         }
         if (Constants.KEY_EMPTY.equals(login) || Constants.KEY_EMPTY.equals(password)
@@ -34,8 +34,8 @@ public class RegistrationController extends AbstractController {
         User user = new User(login, firstName, email);
         try {
             if (userDAO.addUser(user, password)) {
-                /*HttpSession session = request.getSession();
-                session.setAttribute(Constants.KEY_USER, user);*/
+                HttpSession session = request.getSession();
+                session.setAttribute(Constants.KEY_USER, user);
                 jump(Constants.INDEX_JSP, request, response);
                 return;
             }

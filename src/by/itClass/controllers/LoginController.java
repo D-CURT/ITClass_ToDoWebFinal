@@ -40,7 +40,7 @@ public class LoginController extends AbstractController {
         String login = request.getParameter(Constants.KEY_LOGIN);
         String password = request.getParameter(Constants.KEY_PASSWORD);
         if (login == null || password == null) {
-            jumpError(Constants.INDEX_JSP, Constants.ERR_HULL, request, response);
+            jumpError(Constants.INDEX_JSP, Constants.ERR_NULL, request, response);
             return;
         }
         if (Constants.KEY_EMPTY.equals(login) || Constants.KEY_EMPTY.equals(password)) {
