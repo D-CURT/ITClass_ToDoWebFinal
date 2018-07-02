@@ -5,7 +5,7 @@ import by.itClass.interfaces.IUserDAO;
 
 public class UserFactory {
     public static IUserDAO getClassFromFactory() {
-        return new UserMemoryImplementation();
-        //return new UserDBImplementation();
+        //return new UserMemoryImplementation();
+        return new UserDBImplementation();
     }
 }
