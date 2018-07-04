@@ -15,8 +15,7 @@
     <input type="password" name="<%= Constants.KEY_PASSWORD%>" value="" placeholder="password">
     <input type="submit" name="Sign in" value="Sign in">
     <hr>
-
 </form>
-
+<input type="hidden" name="paramList" value="today">
 </body>
 </html>

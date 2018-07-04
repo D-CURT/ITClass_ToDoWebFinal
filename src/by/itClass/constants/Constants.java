@@ -12,6 +12,7 @@ public final class Constants {
 
     //Application constants
     public static final String INDEX_JSP = "/index.jsp";
+    public static final String TASK_CONTROLLER = "/task";
 
     public static final String ERR_NULL = "Login or password are absent";
     public static final String ERR_EMPTY = "Login or password are empty";
@@ -21,6 +22,7 @@ public final class Constants {
 
     public static final String KEY_EMPTY = "";
     public static final String KEY_USER = "user";
+    public static final String KEY_PARAM_LIST = "paramList";
 
     public static final String DRIVER_NAME = "org.gjt.mm.mysql.Driver";
     public static final String DB_URL = "jdbc:mysql://localhost/todo";
