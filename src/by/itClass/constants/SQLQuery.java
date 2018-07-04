@@ -11,6 +11,12 @@ public final class SQLQuery {
     public static final String WHERE_FIX_LIST_TASK = "AND flagFix = 1 AND flagRecycle = 0";
     public static final String WHERE_RECYCLE_LIST_TASK = "AND flagRecycle = 1";
 
+    public static final String NAME_FIELD_ID = "id";
+    public static final String NAME_FIELD_CONTENT = "contentTask";
+    public static final String NAME_FIELD_DATE = "dateTask";
+    public static final String NAME_FIELD_FIXED = "flagFix";
+    public static final String NAME_FIELD_RECYCLE = "flagRecycle";
+
     public static final String INSERT_USERS = "INSERT INTO User (login, password, firstName, eMail) VALUES (?, ?, ?, ?)";
 
     public static final int LOGIN_POSITION = 1;
