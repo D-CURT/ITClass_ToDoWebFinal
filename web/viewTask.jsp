@@ -6,7 +6,7 @@
 </head>
 <body>
     <c:forTokens items = "${param}" var = "task">
-        <c:out value = "${task}"/>
+        <c:out value = "${task}"/><p>
     </c:forTokens>
 </body>
 </html>
