@@ -12,6 +12,7 @@ public final class Constants {
 
     //Application constants
     public static final String INDEX_JSP = "/index.jsp";
+    public static final String TASK_JSP = "/task.jsp";
     public static final String TASK_CONTROLLER = "/task";
 
     public static final String ERR_NULL = "Login or password are absent";

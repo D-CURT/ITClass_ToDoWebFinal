@@ -27,6 +27,7 @@ public class TaskController extends AbstractController {
         SectionTask sectionTask = (SectionTask) TaskFactory.getKindSectionTask(paramList);
         try {
             session.setAttribute(Constants.KEY_PARAM_LIST, taskDAO.getTasks(user, sectionTask));
+            jump(Constants.TASK_JSP, request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }
