@@ -22,8 +22,8 @@ public class TaskController extends AbstractController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(Constants.KEY_USER);
         String paramList = (String) session.getAttribute(Constants.KEY_PARAM_LIST);
-        ITaskDAO taskDAO = TaskFactory.getITaskDAO();
         if (paramList == null) paramList = "today";
+        ITaskDAO taskDAO = TaskFactory.getITaskDAO();
         SectionTask sectionTask = (SectionTask) TaskFactory.getKindSectionTask(paramList);
         try {
             session.setAttribute(Constants.KEY_PARAM_LIST, taskDAO.getTasks(user, sectionTask));

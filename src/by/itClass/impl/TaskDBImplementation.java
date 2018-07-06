@@ -15,7 +15,6 @@ public class TaskDBImplementation implements ITaskDAO {
     @Override
     public List<Task> getTasks(User user, Enum<?> section) throws Exception {
         List<Task> list = new ArrayList<>();
-        SectionTask sectionTask = (SectionTask) section;
         String sql = ((SectionTask) section).getSqlString();
 
         Connection connection = null;
@@ -28,7 +27,7 @@ public class TaskDBImplementation implements ITaskDAO {
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Integer id = resultSet.getInt(SQLQuery.NAME_FIELD_ID);
+                int id = resultSet.getInt(SQLQuery.NAME_FIELD_ID);
                 String contentTask = resultSet.getString(SQLQuery.NAME_FIELD_CONTENT);
                 Date dateTask = resultSet.getDate(SQLQuery.NAME_FIELD_DATE);
                 int flagFix = resultSet.getInt(SQLQuery.NAME_FIELD_FIXED);
