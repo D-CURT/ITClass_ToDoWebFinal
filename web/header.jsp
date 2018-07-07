@@ -25,7 +25,7 @@
             </c:choose>
         </th>
         <th>
-            <a id="login" style="padding-left: 205px"
+            <a style="padding-left: 205px"
                <c:if test="${user.login != null}">hidden</c:if>
                href="login.jsp">Login</a>
         </th>
