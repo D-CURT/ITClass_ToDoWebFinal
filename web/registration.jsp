@@ -6,7 +6,7 @@
     <title>Registration</title>
 </head>
 <body>
-    <form name="regForm" action="<c:url value='/regist'/>" method="POST">
+    <form name="regForm" action="regist" method="POST">
          <h1>Registration</h1>
          <input type="text" name="<%= Constants.KEY_LOGIN%>" value="" placeholder="login">
          <input type="password" name="<%= Constants.KEY_PASSWORD%>" value="" placeholder="password">

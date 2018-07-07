@@ -4,7 +4,7 @@
     <title>View Task</title>
 </head>
 <body>
-    <c:forEach items = "${param}" var = "task">
+    <c:forEach items = "" var = "task">
         <c:out value = "${task}"/>
     </c:forEach>
 </body>

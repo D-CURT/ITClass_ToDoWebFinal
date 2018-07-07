@@ -36,7 +36,7 @@
         <th>
             <a style="padding-left: 185px"
                <c:if test="${user.login == null}">hidden</c:if>
-               href="<c:url value='/logout'/>">Logout</a>
+               href="\logout">Logout</a>
         </th>
     </tr>
 </table>

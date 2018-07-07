@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form name="loginForm" action="<c:url value='/login'/>" method="POST">
+<form name="loginForm" action="login" method="POST">
     <h1>Login</h1>
     <hr>
     <input type="text" name="<%= Constants.KEY_LOGIN%>" value="" placeholder="login">
