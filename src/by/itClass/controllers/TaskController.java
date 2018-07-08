@@ -34,6 +34,7 @@ public class TaskController extends AbstractController {
         ITaskDAO taskDAO = TaskFactory.getITaskDAO();
         SectionTask sectionTask = (SectionTask) TaskFactory.getKindSectionTask(paramList);
         try {
+            System.out.println("1");
             ArrayList<Task> tasks = (ArrayList<Task>) taskDAO.getTasks(user, sectionTask);
             session.setAttribute(Constants.KEY_PARAM_LIST, tasks);
             jump(Constants.TASK_JSP, request, response);

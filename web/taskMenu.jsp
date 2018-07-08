@@ -5,7 +5,7 @@
     <script type="text/javascript" src="Content/JS/sendFormDate.js"></script>
 </head>
 <body>
-<jsp:include page="task"><input type="hidden" name="paramList" value=""></jsp:include>
+
 
     <table>
         <tr>

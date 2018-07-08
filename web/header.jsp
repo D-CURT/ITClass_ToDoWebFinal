@@ -8,8 +8,8 @@
 <table>
     <tr>
         <th>
-            <c:choose>
-                <c:when test="${user.login == null}">
+           <c:choose>
+               <c:when test="${user.login == null}">
                     <c:out value="User: guest"/>
                 </c:when>
                 <c:otherwise>
