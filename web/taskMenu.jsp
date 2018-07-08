@@ -5,10 +5,10 @@
     <script type="text/javascript" src="Content/JS/sendFormDate.js"></script>
 </head>
 <body>
-<form action="task" name="paramList" value="" method="POST">
+<%--<form action="task" name="paramList" value="" method="GET">
     <input type="hidden" name="paramList" value="">
-</form>
-
+</form>--%>
+<jsp:include page="task" flush="true"/>
 
     <table>
         <tr>
