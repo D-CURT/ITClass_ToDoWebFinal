@@ -5,6 +5,9 @@
     <script type="text/javascript" src="Content/JS/sendFormDate.js"></script>
 </head>
 <body>
+<form action="task" name="paramList" value="" method="POST">
+    <input type="hidden" name="paramList" value="">
+</form>
 
 
     <table>
