@@ -18,6 +18,13 @@ public final class SQLQuery {
     public static final String NAME_FIELD_RECYCLE = "flagRecycle";
 
     public static final String INSERT_USERS = "INSERT INTO User (login, password, firstName, eMail) VALUES (?, ?, ?, ?)";
+    public static final String WHERE_TASK_ID = "AND id=?";
+    public static final String ADD_TASK = "INSERT INTO Task(idUser, contentTask, dateTask) VALUES((SELECT id FROM User WHERE login=?),?,?)";
+    public static final String EDIT_TASK = "UPDATE Task SET contentTask=?, dateTask=? WHERE id=?";
+    public static final String FIX_TASK = "UPDATE Task SET flagFix=1 WHERE id=?";
+    public static final String MOVE_TASK_TO_RECYCLE_BIN = "UPDATE Task SET flagRecycle=1 WHERE id=?";
+    public static final String REMOVE_TASK = "DELETE FROM Task WHERE id=?";
+    public static final String RESTORE_TASK = "UPDATE Task SET flagRecycle=0 WHERE id=?";
 
     public static final int LOGIN_POSITION = 1;
     public static final int PASSWORD_POSITION = 2;

@@ -9,6 +9,8 @@
     <%@ include file="taskMenu.jsp"%>
     <br>
     <%@ include file="viewTask.jsp"%>
+    <br>
+    <%@include file="editTaskMenu.jsp"%>
     <hr>
     <%@include file="footer.jsp"%>
 </body>

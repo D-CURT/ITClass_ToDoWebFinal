@@ -1,6 +1,5 @@
 package by.itClass.controllers;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import by.itClass.Section.SectionTask;
 import by.itClass.constants.Constants;
 import by.itClass.factory.TaskFactory;
 import by.itClass.interfaces.ITaskDAO;
@@ -22,7 +20,10 @@ public class TaskController extends AbstractController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(Constants.KEY_USER);
         String paramList = (String) session.getAttribute(Constants.KEY_PARAM_LIST);
-        if (paramList == null) paramList = Constants.PARAM_LIST_TODAY;
+
+        if (paramList == null) {
+            paramList = Constants.PARAM_LIST_TODAY;
+        } else System.out.println(paramList);
 
         try {
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
