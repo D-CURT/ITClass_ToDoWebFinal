@@ -8,7 +8,8 @@ public enum SectionEditTaskMenu {
     FIX(SQLQuery.FIX_TASK),
     RECYCLE(SQLQuery.MOVE_TASK_TO_RECYCLE_BIN),
     REMOVE(SQLQuery.REMOVE_TASK),
-    RESTORE(SQLQuery.RESTORE_TASK);
+    RESTORE(SQLQuery.RESTORE_TASK),
+    OTHER("");
 
     private String sqlString;
 

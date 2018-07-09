@@ -8,4 +8,12 @@ public class SectionManager {
             return SectionTask.TODAY;
         }
     }
+
+    public static Enum<?> getKindSectionEditTaskMenu(String paramEdit) {
+        try {
+            return SectionEditTaskMenu.valueOf(paramEdit);
+        } catch (IllegalArgumentException e) {
+            return SectionEditTaskMenu.OTHER;
+        }
+    }
 }
