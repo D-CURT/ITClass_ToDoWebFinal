@@ -5,7 +5,7 @@
 - http://www.phpmyadmin.net
 -
 - Хост: 127.0.0.1
-- Время создания: Июл 06 2018 г., 02:40
+- Время создания: Июл 09 2018 г., 21:55
 - Версия сервера: 5.5.25
 - Версия PHP: 5.3.13
 -->
@@ -20,12 +20,12 @@
                 CREATE TABLE `task` (
                   `id` int(11) NOT NULL AUTO_INCREMENT,
                   `idUser` int(11) NOT NULL,
-                  `contentTask` varchar(255) NOT NULL,
+                  `contentTask` varchar(500) NOT NULL,
                   `dateTask` date NOT NULL,
-                  `flagFix` int(11) NOT NULL DEFAULT '0',
-                  `flagRecycle` int(11) NOT NULL DEFAULT '0',
+                  `flagFix` int(1) NOT NULL DEFAULT '0',
+                  `flagRecycle` int(1) NOT NULL DEFAULT '0',
                   PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
             </pma:table>
             <pma:table name="user">
                 CREATE TABLE `user` (
@@ -49,7 +49,15 @@
             <column name="id">1</column>
             <column name="idUser">1</column>
             <column name="contentTask">My first task</column>
-            <column name="dateTask">2018-07-04</column>
+            <column name="dateTask">2018-07-09</column>
+            <column name="flagFix">0</column>
+            <column name="flagRecycle">0</column>
+        </table>
+        <table name="task">
+            <column name="id">2</column>
+            <column name="idUser">1</column>
+            <column name="contentTask">My second task</column>
+            <column name="dateTask">2018-07-10</column>
             <column name="flagFix">0</column>
             <column name="flagRecycle">0</column>
         </table>
