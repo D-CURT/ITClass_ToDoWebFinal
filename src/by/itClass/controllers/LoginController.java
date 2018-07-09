@@ -54,7 +54,7 @@ public class LoginController extends AbstractController {
             if (userDAO.isFoundUser(user, password)) {
                 HttpSession session = request.getSession();
                 session.setAttribute(Constants.KEY_USER, user);
-                jump(Constants.TASK_JSP, request, response);
+                jump(Constants.TASK_CONTROLLER, request, response);
                 return;
             }
         } catch (Exception e) {

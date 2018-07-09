@@ -9,6 +9,8 @@ public final class Constants {
     public static final String KEY_FIRST_NAME = "firstName";
     public static final String KEY_EMAIL = "email";
 
+    public static final String PARAM_LIST_TASK = "listTask";
+
 
     //Application constants
     public static final String INDEX_JSP = "/index.jsp";
