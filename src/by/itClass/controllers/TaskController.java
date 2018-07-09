@@ -25,7 +25,6 @@ public class TaskController extends AbstractController {
         if (paramList == null) paramList = Constants.PARAM_LIST_TODAY;
 
         try {
-            System.out.println("1");
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
             Enum<?> sectionTask = TaskFactory.getKindSectionTask(paramList);
             session.setAttribute(Constants.PARAM_LIST_TASK, taskDAO.getTasks(user, sectionTask));

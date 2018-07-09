@@ -31,15 +31,12 @@ public class TaskDBImplementation implements ITaskDAO {
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                System.out.println(2);
                 int id = resultSet.getInt(SQLQuery.NAME_FIELD_ID);
                 String contentTask = resultSet.getString(SQLQuery.NAME_FIELD_CONTENT);
                 Date dateTask = resultSet.getDate(SQLQuery.NAME_FIELD_DATE);
                 int flagFix = resultSet.getInt(SQLQuery.NAME_FIELD_FIXED);
                 int flagRecycle = resultSet.getInt(SQLQuery.NAME_FIELD_RECYCLE);
-                System.out.println("2");
                 list.add(new Task(id, contentTask, dateTask, flagFix, flagRecycle));
-                System.out.println(list);
             }
             return list;
         } catch (SQLException e) {

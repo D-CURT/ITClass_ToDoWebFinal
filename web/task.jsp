@@ -8,7 +8,6 @@
     <hr>
     <%@ include file="taskMenu.jsp"%>
     <br>
-    You are log in;
     <%@ include file="viewTask.jsp"%>
     <hr>
     <%@include file="footer.jsp"%>

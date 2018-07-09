@@ -12,7 +12,10 @@
             <tr></tr>
             <tr>
                 <td><c:out value="${task.contentTask}"></c:out></td>
-                <%--<td>${task.dateTask}</td>--%>
+
+            </tr>
+            <tr>
+                <td><c:out value="${task.dateTask}"></c:out></td>
             </tr>
         </c:forEach>
     </table>
