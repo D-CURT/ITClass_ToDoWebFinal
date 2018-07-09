@@ -5,11 +5,8 @@
     <script type="text/javascript" src="Content/JS/sendFormDate.js"></script>
 </head>
 <body>
-<%--<form action="task" name="paramList" value="" method="GET">
+<form action="task" name="paramList" value="" method="GET">
     <input type="hidden" name="paramList" value="">
-</form>--%>
-<jsp:include page="task" flush="true"/>
-
     <table>
         <tr>
             <td><a href="JavaScript:sendNextForm('today')">Today</a></td>
@@ -19,5 +16,8 @@
             <td><a href="JavaScript:sendNextForm('fixed')">Recycle_Bin</a></td>
         </tr>
     </table>
+</form>
+
+
 </body>
 </html>

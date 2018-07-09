@@ -29,4 +29,6 @@ public final class Constants {
     public static final String DB_URL = "jdbc:mysql://localhost/todo";
     public static final String USER_NAME = "root";
     public static final String PASSWORD = "";
+
+    public static final String PARAM_LIST_TODAY = "today";
 }
