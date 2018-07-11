@@ -31,4 +31,7 @@ public final class SQLQuery {
     public static final int FIRST_NAME_POSITION = 3;
     public static final int EMAIL_POSITION = 4;
 
+    public static final int CONTENT_POSITION = 2;
+    public static final int DATE_POSITION = 3;
+
 }

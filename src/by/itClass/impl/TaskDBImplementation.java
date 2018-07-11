@@ -1,5 +1,7 @@
 package by.itClass.impl;
 
+import by.itClass.constants.Constants;
+import by.itClass.section.SectionEditTaskMenu;
 import by.itClass.section.SectionTask;
 import by.itClass.constants.SQLQuery;
 import by.itClass.interfaces.ITaskDAO;
@@ -50,7 +52,22 @@ public class TaskDBImplementation implements ITaskDAO {
 
     @Override
     public void addTask(User user, Task task, Enum<?> section) throws Exception {
+        SectionEditTaskMenu sect = (SectionEditTaskMenu) section;
+        String sql = sect.getSqlString();
 
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = ConnectionManager.createConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(SQLQuery.CONTENT_POSITION, task.getContentTask());
+            preparedStatement.setDate(SQLQuery.DATE_POSITION, task.getDateTask());
+        } catch (SQLException e) {
+            throw new SQLException();
+        } finally {
+            ConnectionManager.closeStatement(preparedStatement);
+            ConnectionManager.closeConnection(connection);
+        }
     }
 
     @Override
