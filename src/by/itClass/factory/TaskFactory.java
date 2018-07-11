@@ -10,6 +10,7 @@ public class TaskFactory {
     }
 
     public static Enum<?> getKindSectionTask(String paramList) {
+        System.out.println(5);
         return SectionManager.getKindSectionTask(paramList);
     }
 

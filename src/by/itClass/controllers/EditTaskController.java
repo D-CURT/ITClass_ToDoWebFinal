@@ -36,7 +36,7 @@ public class EditTaskController extends AbstractController {
                 }
 
                 taskDAO.addTask(user, task, section);
-                jump(Constants.TASK_JSP, request, response);
+                jump(Constants.TASK_CONTROLLER, request, response);
             }
         } catch (Exception e) {
             jumpError(Constants.TASK_JSP, e.getMessage(), request, response);
