@@ -1,6 +1,6 @@
 package by.itClass.impl;
 
-import by.itClass.Section.SectionTask;
+import by.itClass.section.SectionTask;
 import by.itClass.constants.SQLQuery;
 import by.itClass.interfaces.ITaskDAO;
 import by.itClass.model.beans.ConnectionManager;

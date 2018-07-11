@@ -1,4 +1,4 @@
-package by.itClass.Section;
+package by.itClass.section;
 
 public class SectionManager {
     public static Enum<?> getKindSectionTask(String paramList) {

@@ -1,4 +1,4 @@
-package by.itClass.Section;
+package by.itClass.section;
 
 import by.itClass.constants.SQLQuery;
 

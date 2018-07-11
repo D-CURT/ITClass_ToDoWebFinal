@@ -19,6 +19,7 @@ public class TaskController extends AbstractController {
     public void performTask(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(Constants.KEY_USER);
+        session.setAttribute(Constants.KEY_PARAM_LIST, request.getParameter(Constants.KEY_PARAM_LIST));
         String paramList = (String) session.getAttribute(Constants.KEY_PARAM_LIST);
 
         if (paramList == null) {
