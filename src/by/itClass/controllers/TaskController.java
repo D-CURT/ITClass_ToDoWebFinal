@@ -26,17 +26,11 @@ public class TaskController extends AbstractController {
             paramList = Constants.PARAM_LIST_TODAY;
         }
 
-        System.out.println(paramList);
         try {
-            System.out.println(1);
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
             Enum<?> sectionTask = TaskFactory.getKindSectionTask(paramList);
-            System.out.println(2);
-            System.out.println(sectionTask.toString());
             session.setAttribute(Constants.PARAM_LIST_TASK, taskDAO.getTasks(user, sectionTask));
-
             jump(Constants.TASK_JSP, request, response);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
