@@ -59,11 +59,13 @@ public class TaskDBImplementation implements ITaskDAO {
         PreparedStatement preparedStatement = null;
 
         try {
+            System.out.println(1);
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
             preparedStatement.setString(SQLQuery.CONTENT_POSITION, task.getContentTask());
             preparedStatement.setDate(SQLQuery.DATE_POSITION, task.getDateTask());
+            System.out.println(preparedStatement.toString());
             preparedStatement.executeQuery();
 
         } catch (SQLException e) {

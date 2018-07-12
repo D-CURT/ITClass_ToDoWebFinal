@@ -14,6 +14,6 @@ public class TaskFactory {
     }
 
     public static  Enum<?> getKindSectionEditTask(String paramEdit) {
-        return SectionManager.getKindSectionTask(paramEdit);
+        return SectionManager.getKindSectionEditTaskMenu(paramEdit);
     }
 }

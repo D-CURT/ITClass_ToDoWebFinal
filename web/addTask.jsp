@@ -9,7 +9,7 @@
         <table border="1">
             <tr><td>Add Task</td></tr>
             <tr>
-                <td><input type="text" name="constTask" value=""></td>
+                <td><input type="text" name="contentTask" value=""></td>
                 <td><input type="date" name="dateTask" value=""></td>
                 <td><input type="submit" value="Add new task"></td>
             </tr>

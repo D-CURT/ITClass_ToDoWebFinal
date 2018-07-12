@@ -11,7 +11,7 @@ public class ValidationManager {
     public static Date getValidateDate(String date) {
         final SimpleDateFormat GET_DATE_FORMAT = new SimpleDateFormat("yyyy:MM:dd");
         Date dateTask = null;
-        String tmpDate = date.replace(".",":").replace("-",":");
+        String tmpDate = date.replace(".",":").replaceAll("-",":");
         try {
             return new Date((GET_DATE_FORMAT.parse(tmpDate)).getTime());
         } catch (Exception e) {
