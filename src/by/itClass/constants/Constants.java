@@ -11,7 +11,7 @@ public final class Constants {
 
     public static final String PARAM_LIST_TASK = "listTask";
     public static final String PARAM_CONTENT_TASK = "contentTask";
-    public static final String PARAN_TASK_DATE = "dateTask";
+    public static final String PARAM_DATE_TASK = "dateTask";
 
 
 

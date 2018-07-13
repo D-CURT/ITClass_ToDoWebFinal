@@ -28,8 +28,9 @@ public class EditTaskController extends AbstractController {
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
             if (section == SectionEditTaskMenu.ADD) {
                 String contentTask = request.getParameter(Constants.PARAM_CONTENT_TASK);
-                String dateTask = request.getParameter(Constants.PARAN_TASK_DATE);
+                String dateTask = request.getParameter(Constants.PARAM_DATE_TASK);
                 Task task = ValidationManager.getTask(contentTask, dateTask);
+
                 if (task == null) {
                     jumpError(Constants.TASK_ADD_JSP, Constants.ERR_MESS_ADD_TASK, request, response);
                 }
