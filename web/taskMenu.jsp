@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import = "by.itClass.constants.Constants" %>
 <html>
 <head>
     <title>Task Menu</title>
@@ -6,7 +7,7 @@
 </head>
 <body>
 <form action="task" name="next" value="" method="GET">
-    <input type="hidden" name="paramList" value="">
+    <input type="hidden" name="<%= Constants.KEY_PARAM_LIST%>" value="">
 </form>
     <table>
         <tr>
