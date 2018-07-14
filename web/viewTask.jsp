@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import = "by.itClass.constants.Constants" %>
 <html>
 <head>
     <title>View Task</title>
@@ -9,10 +8,11 @@
         <tr></tr>
         <tr><td>Task</td></tr>
         <c:forEach items = "${listTask}" var = "task">
-            <tr></tr>
+            <tr>
+                <td><c:out value="${task.title}"></c:out></td>
+            </tr>
             <tr>
                 <td><c:out value="${task.contentTask}"></c:out></td>
-
             </tr>
             <tr>
                 <td><c:out value="${task.dateTask}"></c:out></td>

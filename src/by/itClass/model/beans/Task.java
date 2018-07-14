@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Task {
     public int id;
+    private String title;
     private String contentTask;
     private Date dateTask;
     private int flagFix;
@@ -11,16 +12,18 @@ public class Task {
 
     public Task() {}
 
-    public Task(int id, String contentTask, Date dateTask, int flagFix, int flagRecycle) {
+    public Task(int id, String title, String contentTask, Date dateTask, int flagFix, int flagRecycle) {
         this.id = id;
+        this.title = title;
         this.contentTask = contentTask;
         this.dateTask = dateTask;
         this.flagFix = flagFix;
         this.flagRecycle = flagRecycle;
     }
 
-    public Task(int id, String contentTask, Date dateTask) {
+    public Task(int id, String title, String contentTask, Date dateTask) {
         this.id = id;
+        this.title = title;
         this.contentTask = contentTask;
         this.dateTask = dateTask;
     }
@@ -29,6 +32,11 @@ public class Task {
         this.contentTask = contentTask;
         this.dateTask = dateTask;
     }
+
+    /*public Task(String title, Date dateTask) {
+        this.title = title;
+        this.dateTask = dateTask;
+    }*/
 
     public int getId() {
         return id;
@@ -45,6 +53,14 @@ public class Task {
             throw new NumberFormatException();
         }
 
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getContentTask() {

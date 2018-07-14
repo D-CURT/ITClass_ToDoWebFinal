@@ -10,7 +10,7 @@
     <table>
         <tr>
             <td><a href="addTask.jsp">Add task</a></td>
-            <td><a href="#">Edit task</a></td>
+            <td><a href="editTask.jsp">Edit task</a></td>
             <td><a href="#">Fix task</a></td>
             <td><a href="#">Recycle task</a></td>
             <td><a href="#">Remove task</a></td>

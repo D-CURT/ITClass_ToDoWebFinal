@@ -12,6 +12,7 @@ public final class SQLQuery {
     public static final String WHERE_RECYCLE_LIST_TASK = "AND flagRecycle = 1";
 
     public static final String NAME_FIELD_ID = "id";
+    public static final String NAME_FIELD_TITLE = "title";
     public static final String NAME_FIELD_CONTENT = "contentTask";
     public static final String NAME_FIELD_DATE = "dateTask";
     public static final String NAME_FIELD_FIXED = "flagFix";
