@@ -8,6 +8,7 @@ import by.itClass.interfaces.ITaskDAO;
 import by.itClass.model.beans.ConnectionManager;
 import by.itClass.model.beans.Task;
 import by.itClass.model.beans.User;
+import by.itClass.valid.ValidationManager;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -32,6 +33,45 @@ public class TaskDBImplementation implements ITaskDAO {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
             resultSet = preparedStatement.executeQuery();
+            list.addAll(getListFromResultSet(resultSet));
+            return list;
+        } catch (SQLException e) {
+            throw new SQLException();
+        } finally {
+            ConnectionManager.closeResultSet(resultSet);
+            ConnectionManager.closeStatement(preparedStatement);
+            ConnectionManager.closeConnection(connection);
+        }
+    }
+
+    public List<Task> getTasks(User user, Task task, Enum<?> section) throws Exception {
+        List<Task> list = new ArrayList<>();
+        String sql = ((SectionTask) section).getSqlString();
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = ConnectionManager.createConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
+            preparedStatement.setString(2, task.getTitle());
+            preparedStatement.setDate(4, task.getDateTask());
+            resultSet = preparedStatement.executeQuery();
+            list.addAll(getListFromResultSet(resultSet));
+            return list;
+        } catch (SQLException e) {
+            throw new SQLException();
+        } finally {
+            ConnectionManager.closeResultSet(resultSet);
+            ConnectionManager.closeStatement(preparedStatement);
+            ConnectionManager.closeConnection(connection);
+        }
+    }
+
+    private static List<Task> getListFromResultSet(ResultSet resultSet) throws SQLException {
+        List<Task> list = new ArrayList<>();
+        try {
             while (resultSet.next()) {
                 int id = resultSet.getInt(SQLQuery.NAME_FIELD_ID);
                 String title = resultSet.getString(SQLQuery.NAME_FIELD_TITLE);
@@ -46,8 +86,6 @@ public class TaskDBImplementation implements ITaskDAO {
             throw new SQLException();
         } finally {
             ConnectionManager.closeResultSet(resultSet);
-            ConnectionManager.closeStatement(preparedStatement);
-            ConnectionManager.closeConnection(connection);
         }
     }
 
@@ -55,7 +93,6 @@ public class TaskDBImplementation implements ITaskDAO {
     public void addTask(User user, Task task, Enum<?> section) throws Exception {
         SectionEditTaskMenu sect = (SectionEditTaskMenu) section;
         String sql = sect.getSqlString();
-
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
@@ -63,6 +100,7 @@ public class TaskDBImplementation implements ITaskDAO {
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
+            preparedStatement.setString(SQLQuery.TITLE_POSITION, task.getTitle());
             preparedStatement.setString(SQLQuery.CONTENT_POSITION, task.getContentTask());
             preparedStatement.setDate(SQLQuery.DATE_POSITION, task.getDateTask());
             preparedStatement.execute();

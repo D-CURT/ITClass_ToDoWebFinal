@@ -27,9 +27,11 @@ public class EditTaskController extends AbstractController {
             Enum<?> section = TaskFactory.getKindSectionEditTask(paramEdit);
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
             if (section == SectionEditTaskMenu.ADD) {
+                String title = request.getParameter(Constants.PARAM_TITLE_TASK);
                 String contentTask = request.getParameter(Constants.PARAM_CONTENT_TASK);
+                System.out.println(contentTask);
                 String dateTask = request.getParameter(Constants.PARAM_DATE_TASK);
-                Task task = ValidationManager.getTask(contentTask, dateTask);
+                Task task = ValidationManager.getTask(title ,contentTask, dateTask);
 
                 if (task == null) {
                     jumpError(Constants.TASK_ADD_JSP, Constants.ERR_MESS_ADD_TASK, request, response);

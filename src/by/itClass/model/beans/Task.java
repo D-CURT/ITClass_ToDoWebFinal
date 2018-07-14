@@ -28,15 +28,16 @@ public class Task {
         this.dateTask = dateTask;
     }
 
-    public Task(String contentTask, Date dateTask) {
+    /*public Task(String contentTask, Date dateTask) {
         this.contentTask = contentTask;
         this.dateTask = dateTask;
-    }
+    }*/
 
-    /*public Task(String title, Date dateTask) {
+    public Task(String title, String contentTask, Date dateTask) {
+        this.contentTask = contentTask;
         this.title = title;
         this.dateTask = dateTask;
-    }*/
+    }
 
     public int getId() {
         return id;
@@ -97,4 +98,15 @@ public class Task {
         this.flagRecycle = flagRecycle;
     }
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", contentTask='" + contentTask + '\'' +
+                ", dateTask=" + dateTask +
+                ", flagFix=" + flagFix +
+                ", flagRecycle=" + flagRecycle +
+                '}';
+    }
 }
