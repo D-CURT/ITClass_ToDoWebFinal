@@ -7,15 +7,22 @@
     <%@include file="searchTask.jsp"%>
     <hr>
 
-    <table>
+    <table border="1">
         <c:forEach items="${listTask}" var="task">
-            <a href="task">
-                <input type="hidden" name="">
-            </a>
+            <form action="edit" name="edit" method="post">
+                <input type="hidden" name="<%=Constants.KEY_PARAM_EDIT%>" value="edit">
+                <tr>
+                    <td><input type="text" name="<%=Constants.PARAM_TITLE_TASK%>" value="${task.title}"></td>
+                    <td><input type="date" name="<%=Constants.PARAM_DATE_TASK%>" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="<%=Constants.PARAM_CONTENT_TASK%>" value="${task.contentTask}"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Edit"></td>
+                </tr>
+            </form>
         </c:forEach>
-        <tr>
-
-        </tr>
     </table>
 </body>
 </html>
