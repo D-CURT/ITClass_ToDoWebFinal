@@ -6,7 +6,6 @@
 </head>
 <body>
     <form action="task" name="edit" method="GET">
-       <%-- <input type="hidden" name="<%=Constants.KEY_PARAM_EDIT%>" value="<%=Constants.KEY_PARAM_SEARCH%>">--%>
         <input type="hidden" name="<%= Constants.KEY_PARAM_LIST%>" value="<%=Constants.PARAM_LIST_CHOSEN%>">
         <table border="1">
             <tr>

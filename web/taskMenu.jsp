@@ -8,7 +8,6 @@
 <body>
 <form action="task" name="next" value="" method="GET">
     <input type="hidden" name="<%= Constants.KEY_PARAM_LIST%>" value="">
-</form>
     <table>
         <tr>
             <td><a href="JavaScript:sendNextForm('today')">Today</a></td>
@@ -18,7 +17,7 @@
             <td><a href="JavaScript:sendNextForm('recycle')">Recycle_Bin</a></td>
         </tr>
     </table>
-
+</form>
 
 
 </body>

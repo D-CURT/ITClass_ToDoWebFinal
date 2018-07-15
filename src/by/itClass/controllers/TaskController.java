@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import by.itClass.constants.Constants;
 import by.itClass.factory.TaskFactory;
+import by.itClass.impl.TaskDBImplementation;
 import by.itClass.interfaces.ITaskDAO;
 import by.itClass.model.beans.User;
 import by.itClass.section.SectionTask;
@@ -31,9 +32,17 @@ public class TaskController extends AbstractController {
         try {
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
             Enum<?> sectionTask = TaskFactory.getKindSectionTask(paramList);
-            session.setAttribute(Constants.PARAM_LIST_TASK, taskDAO.getTasks(user, sectionTask));
-            if (paramList == SectionTask.CHOSEN)
-            jump(Constants.TASK_JSP, request, response);
+            System.out.println(paramList.toUpperCase());
+            if (sectionTask == SectionTask.CHOSEN) {
+                System.out.println(1);
+
+                String dateTask = request.getParameter(Constants.PARAM_DATE_TASK);
+                session.setAttribute(Constants.PARAM_LIST_TASK, new TaskDBImplementation().getTasks(user, dateTask, sectionTask));
+                jump(Constants.TASK_EDIT_JSP, request, response);
+            } else {
+                session.setAttribute(Constants.PARAM_LIST_TASK, taskDAO.getTasks(user, sectionTask));
+                jump(Constants.TASK_JSP, request, response);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

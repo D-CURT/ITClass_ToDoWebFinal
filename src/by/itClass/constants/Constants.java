@@ -21,6 +21,7 @@ public final class Constants {
     public static final String TASK_JSP = "/task.jsp";
     public static final String TASK_CONTROLLER = "/task";
     public static final String TASK_ADD_JSP = "/addTask.jsp";
+    public static final String TASK_EDIT_JSP = "/editTask.jsp";
 
     public static final String ERR_NULL = "Login or password are absent";
     public static final String ERR_EMPTY = "Login or password are empty";

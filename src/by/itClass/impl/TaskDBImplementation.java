@@ -32,6 +32,7 @@ public class TaskDBImplementation implements ITaskDAO {
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
+            System.out.println(preparedStatement);
             resultSet = preparedStatement.executeQuery();
             list.addAll(getListFromResultSet(resultSet));
             return list;
@@ -44,9 +45,10 @@ public class TaskDBImplementation implements ITaskDAO {
         }
     }
 
-    public List<Task> getTasks(User user, Task task, Enum<?> section) throws Exception {
+    public List<Task> getTasks(User user, String dateTask, Enum<?> section) throws Exception {
         List<Task> list = new ArrayList<>();
         String sql = ((SectionTask) section).getSqlString();
+        System.out.println(sql);
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -55,8 +57,10 @@ public class TaskDBImplementation implements ITaskDAO {
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
-            preparedStatement.setString(2, task.getTitle());
-            preparedStatement.setDate(4, task.getDateTask());
+            System.out.println(preparedStatement);
+            System.out.println(dateTask);
+            preparedStatement.setDate(2, ValidationManager.getValidateDate(dateTask));
+            System.out.println(preparedStatement);
             resultSet = preparedStatement.executeQuery();
             list.addAll(getListFromResultSet(resultSet));
             return list;
