@@ -36,6 +36,7 @@ public final class Constants {
     public static final String KEY_PARAM_LIST = "paramList";
     public static final String KEY_PARAM_EDIT = "paramEdit";
     public static final String KEY_PARAM_SEARCH = "search";
+    public static final String KEY_PARAM_EDIT_CHECK = "checkEditTask";
 
     public static final String DRIVER_NAME = "org.gjt.mm.mysql.Driver";
     public static final String DB_URL = "jdbc:mysql://localhost/todo";
@@ -43,5 +44,6 @@ public final class Constants {
     public static final String PASSWORD = "";
 
     public static final String PARAM_LIST_TODAY = "today";
+    public static final String PARAM_EDIT_TASK = "recycle";
     public static final String PARAM_LIST_CHOSEN = "chosen";
 }

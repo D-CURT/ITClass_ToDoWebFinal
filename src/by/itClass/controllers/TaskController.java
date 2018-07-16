@@ -31,15 +31,15 @@ public class TaskController extends AbstractController {
         try {
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
             Enum<?> sectionTask = TaskFactory.getKindSectionTask(paramList);
-            System.out.println(paramList.toUpperCase());
-            if (sectionTask == SectionTask.CHOSEN) {
+            System.out.println("TaskCon: " + paramList.toUpperCase());
+            /*if (sectionTask == SectionTask.CHOSEN) {
                 String dateTask = request.getParameter(Constants.PARAM_DATE_TASK);
                 session.setAttribute(Constants.PARAM_LIST_TASK, new TaskDBImplementation().getTasks(user, dateTask, sectionTask));
                 jump(Constants.TASK_EDIT_JSP, request, response);
-            } else {
+            } else {*/
                 session.setAttribute(Constants.PARAM_LIST_TASK, taskDAO.getTasks(user, sectionTask));
                 jump(Constants.TASK_JSP, request, response);
-            }
+           /* }*/
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -31,6 +31,7 @@ public class EditTaskController extends AbstractController {
 
         try {
             Enum<?> section = TaskFactory.getKindSectionEditTask(paramEdit);
+            System.out.println("EditCon: " + paramEdit);
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
             Task task = ValidationManager.getTask(title ,contentTask, dateTask);
             if (task == null) {
@@ -38,12 +39,15 @@ public class EditTaskController extends AbstractController {
             } else {
                 if (section == SectionEditTaskMenu.ADD) {
                     taskDAO.addTask(user, task, section);
-                }
-                if (section == SectionEditTaskMenu.EDIT) {
+                } else { /*if (section == SectionEditTaskMenu.EDIT) {
                     taskDAO.doEditTask(request.getParameterValues(Constants.PARAM_CHECKBOX),
-                            new TaskDBImplementation().getTasks(user, dateTask, section), section);
+                            new TaskDBImplementation().getTasks(user, dateTask, section), section);*/
+                    String[] arrayId = request.getParameterValues(Constants.KEY_PARAM_EDIT_CHECK);
+                    if (arrayId != null) {
+                        taskDAO.doEditTask(arrayId, section);
+                        jump(Constants.TASK_CONTROLLER, request, response);
+                    }
                 }
-                jump(Constants.TASK_CONTROLLER, request, response);
             }
         } catch (Exception e) {
             jumpError(Constants.TASK_JSP, e.getMessage(), request, response);

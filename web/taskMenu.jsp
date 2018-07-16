@@ -6,7 +6,7 @@
     <script type="text/javascript" src="Content/JS/sendNextForm.js"></script>
 </head>
 <body>
-<form action="task" name="next" value="" method="GET">
+<form action="task" name="next" value="" method="POST">
     <input type="hidden" name="<%= Constants.KEY_PARAM_LIST%>" value="">
     <table>
         <tr>
@@ -18,7 +18,6 @@
         </tr>
     </table>
 </form>
-
 
 </body>
 </html>

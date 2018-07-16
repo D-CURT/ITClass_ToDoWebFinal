@@ -17,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 public class TaskDBImplementation implements ITaskDAO {
     @Override
@@ -113,7 +114,7 @@ public class TaskDBImplementation implements ITaskDAO {
         }
     }
 
-    @Override
+    /*@Override
     public void doEditTask(String[] listId, List<Task> list, Enum<?> section) throws Exception {
         String sql = ((SectionEditTaskMenu) section).getSqlString();
         Connection connection = null;
@@ -141,5 +142,33 @@ public class TaskDBImplementation implements ITaskDAO {
             ConnectionManager.closeStatement(preparedStatement);
             ConnectionManager.closeConnection(connection);
         }
+    }*/
+
+    @Override
+    public void doEditTask(String[] listId, Enum<?> section) throws Exception {
+        String sql = ((SectionEditTaskMenu) section).getSqlString();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            System.out.println(1);
+            connection = ConnectionManager.createConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            for (String id: listId) {
+                int idTask = Integer.parseInt(id);
+                preparedStatement.setInt(SQLQuery.ID_TASK_POSITION, idTask);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            throw new SQLException();
+        } finally {
+            ConnectionManager.closeStatement(preparedStatement);
+            ConnectionManager.closeConnection(connection);
+        }
+    }
+
+    @Override
+    public List<Task> editListTask(String[] arrayId) throws Exception {
+       Connection connection = null;
     }
 }
