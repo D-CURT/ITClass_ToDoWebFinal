@@ -10,5 +10,5 @@ public interface ITaskDAO {
 
     void addTask(User user, Task task, Enum<?> section) throws Exception;
 
-    void doEditTask(String[] listId, Enum<?> section) throws Exception;
+    void doEditTask(String[] listId, List<Task> list, Enum<?> section) throws Exception;
 }

@@ -23,7 +23,6 @@ public class TaskController extends AbstractController {
         User user = (User) session.getAttribute(Constants.KEY_USER);
         session.setAttribute(Constants.KEY_PARAM_LIST, request.getParameter(Constants.KEY_PARAM_LIST));
         String paramList = (String) session.getAttribute(Constants.KEY_PARAM_LIST);
-        String paramEdit = (String) session.getAttribute(Constants.KEY_PARAM_EDIT);
 
         if (paramList == null) {
             paramList = Constants.PARAM_LIST_TODAY;
@@ -34,8 +33,6 @@ public class TaskController extends AbstractController {
             Enum<?> sectionTask = TaskFactory.getKindSectionTask(paramList);
             System.out.println(paramList.toUpperCase());
             if (sectionTask == SectionTask.CHOSEN) {
-                System.out.println(1);
-
                 String dateTask = request.getParameter(Constants.PARAM_DATE_TASK);
                 session.setAttribute(Constants.PARAM_LIST_TASK, new TaskDBImplementation().getTasks(user, dateTask, sectionTask));
                 jump(Constants.TASK_EDIT_JSP, request, response);

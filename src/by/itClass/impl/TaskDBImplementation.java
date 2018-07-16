@@ -57,10 +57,7 @@ public class TaskDBImplementation implements ITaskDAO {
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
-            System.out.println(preparedStatement);
-            System.out.println(dateTask);
             preparedStatement.setDate(2, ValidationManager.getValidateDate(dateTask));
-            System.out.println(preparedStatement);
             resultSet = preparedStatement.executeQuery();
             list.addAll(getListFromResultSet(resultSet));
             return list;
@@ -117,7 +114,32 @@ public class TaskDBImplementation implements ITaskDAO {
     }
 
     @Override
-    public void doEditTask(String[] listId, Enum<?> section) throws Exception {
+    public void doEditTask(String[] listId, List<Task> list, Enum<?> section) throws Exception {
+        String sql = ((SectionEditTaskMenu) section).getSqlString();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
 
+        try {
+            connection = ConnectionManager.createConnection();
+            preparedStatement = connection.prepareStatement(sql);
+            for (String id: listId) {
+                for (Task task: list) {
+                    if (task.id == Integer.parseInt(id)) {
+                        preparedStatement.setString(1, task.getTitle());
+                        preparedStatement.setString(2, task.getContentTask());
+                        preparedStatement.setDate(3, task.getDateTask());
+                        preparedStatement.setInt(4, task.id);
+                        preparedStatement.execute();
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw new SQLException();
+        } finally {
+            ConnectionManager.closeResultSet(resultSet);
+            ConnectionManager.closeStatement(preparedStatement);
+            ConnectionManager.closeConnection(connection);
+        }
     }
 }
