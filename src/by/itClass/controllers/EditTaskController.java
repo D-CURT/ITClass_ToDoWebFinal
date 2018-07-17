@@ -24,32 +24,35 @@ public class EditTaskController extends AbstractController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(Constants.KEY_USER);
         String paramEdit = request.getParameter(Constants.KEY_PARAM_EDIT);
-        String title = request.getParameter(Constants.PARAM_TITLE_TASK);
-        String contentTask = request.getParameter(Constants.PARAM_CONTENT_TASK);
-        String dateTask = request.getParameter(Constants.PARAM_DATE_TASK);
-
-
         try {
-            Enum<?> section = TaskFactory.getKindSectionEditTask(paramEdit);
-            System.out.println("EditCon: " + paramEdit);
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
-            Task task = ValidationManager.getTask(title ,contentTask, dateTask);
-            if (task == null) {
-                jumpError(Constants.TASK_ADD_JSP, Constants.ERR_MESS_ADD_TASK, request, response);
+            Enum<?> section = TaskFactory.getKindSectionEditTask(paramEdit);
+            System.out.println("EditCon: " + paramEdit.toUpperCase());
+            System.out.println(section.name());
+
+            if (section == SectionEditTaskMenu.ADD) {
+                String title = request.getParameter(Constants.PARAM_TITLE_TASK);
+                String contentTask = request.getParameter(Constants.PARAM_CONTENT_TASK);
+                String dateTask = request.getParameter(Constants.PARAM_DATE_TASK);
+                Task task = ValidationManager.getTask(title ,contentTask, dateTask);
+                taskDAO.addTask(user, task, section);
             } else {
-                if (section == SectionEditTaskMenu.ADD) {
-                    taskDAO.addTask(user, task, section);
-                } else { /*if (section == SectionEditTaskMenu.EDIT) {
+                String[] arrayId = request.getParameterValues(Constants.KEY_PARAM_EDIT_CHECK);
+                if (arrayId != null) {
+                    taskDAO.doEditTask(arrayId, section);
+                }
+                    /*if (section == SectionEditTaskMenu.EDIT) {
                     taskDAO.doEditTask(request.getParameterValues(Constants.PARAM_CHECKBOX),
                             new TaskDBImplementation().getTasks(user, dateTask, section), section);*/
-                    String[] arrayId = request.getParameterValues(Constants.KEY_PARAM_EDIT_CHECK);
-                    if (arrayId != null) {
-                        taskDAO.doEditTask(arrayId, section);
-                        jump(Constants.TASK_CONTROLLER, request, response);
-                    }
-                }
             }
+            jump(Constants.TASK_CONTROLLER, request, response);
+            /*if (task == null) {
+                jumpError(Constants.TASK_ADD_JSP, Constants.ERR_MESS_ADD_TASK, request, response);
+            } else {*/
+
+         /*   }*/
         } catch (Exception e) {
+            System.out.println(3);
             jumpError(Constants.TASK_JSP, e.getMessage(), request, response);
         }
     }

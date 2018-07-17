@@ -14,7 +14,7 @@
             <td><a href="JavaScript:sendNextForm('tomorrow')">Tomorrow</a></td>
             <td><a href="JavaScript:sendNextForm('someday')">Someday</a></td>
             <td><a href="JavaScript:sendNextForm('fixed')">Fixed</a></td>
-            <td><a href="JavaScript:sendNextForm('recycle')">Recycle_Bin</a></td>
+            <td><a href="JavaScript:sendNextForm('recycle')">Trash</a></td>
         </tr>
     </table>
 </form>
