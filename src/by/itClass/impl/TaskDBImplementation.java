@@ -46,7 +46,7 @@ public class TaskDBImplementation implements ITaskDAO {
         }
     }
 
-    public List<Task> getTasks(User user, String dateTask, Enum<?> section) throws Exception {
+    /*public List<Task> getTasks(User user, String dateTask, Enum<?> section) throws Exception {
         List<Task> list = new ArrayList<>();
         String sql = ((SectionTask) section).getSqlString();
         System.out.println(sql);
@@ -69,7 +69,7 @@ public class TaskDBImplementation implements ITaskDAO {
             ConnectionManager.closeStatement(preparedStatement);
             ConnectionManager.closeConnection(connection);
         }
-    }
+    }*/
 
     private static List<Task> getListFromResultSet(ResultSet resultSet) throws SQLException {
         List<Task> list = new ArrayList<>();
@@ -166,9 +166,4 @@ public class TaskDBImplementation implements ITaskDAO {
             ConnectionManager.closeConnection(connection);
         }
     }
-
-    /*@Override
-    public List<Task> editListTask(String[] arrayId) throws Exception {
-       Connection connection = null;
-    }*/
 }
