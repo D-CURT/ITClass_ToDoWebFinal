@@ -24,6 +24,7 @@ public abstract class AbstractController extends HttpServlet {
     }
 
     public abstract void performTask(HttpServletRequest request, HttpServletResponse response) throws SecurityException, IOException, ServletException;
+
     public void jump(String url, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);

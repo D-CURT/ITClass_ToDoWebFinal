@@ -13,9 +13,6 @@ public final class Constants {
     public static final String PARAM_TITLE_TASK = "title";
     public static final String PARAM_CONTENT_TASK = "contentTask";
     public static final String PARAM_DATE_TASK = "dateTask";
-    public static final String PARAM_CHECKBOX = "selected";
-
-
 
     //Application constants
     public static final String INDEX_JSP = "/index.jsp";
@@ -27,7 +24,7 @@ public final class Constants {
     public static final String ERR_NULL = "Login or password are absent";
     public static final String ERR_EMPTY = "Login or password are empty";
     public static final String ERR_LOGIN = "Incorrect login or password";
-    public static final String ERR_REG_EMPTY = "Some registration field is empty";
+    public static final String ERR_INPUT_EMPTY = "Field is empty";
     public static final String ERR_REG_LOGIN = "The login already in use.";
     public static final String ERR_MESS_ADD_TASK = "Adding task fail";
 

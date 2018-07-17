@@ -5,6 +5,11 @@
     <title>Add task</title>
 </head>
 <body>
+
+<c:if test="${not empty errorMessage}">
+    <p style="color: red"><c:out value="${errorMessage}"/></p>
+</c:if>
+
     <form action="edit" method="post" name="add">
         <input type="hidden" name="<%= Constants.KEY_PARAM_EDIT%>" value="add">
         <table border="1">

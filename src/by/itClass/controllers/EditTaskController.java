@@ -34,16 +34,19 @@ public class EditTaskController extends AbstractController {
             Enum<?> section = TaskFactory.getKindSectionEditTask(paramEdit);
             System.out.println("EditCon: " + paramEdit.toUpperCase());
             System.out.println(section.name());
-
+            if (isNullRequestParameters(title, contentTask, dateTask)) {
+                if (section == SectionEditTaskMenu.ADD)
+                    jumpError(Constants.TASK_ADD_JSP, Constants.ERR_INPUT_EMPTY, request, response);
+                else jumpError(Constants.TASK_JSP, Constants.ERR_INPUT_EMPTY, request, response);
+            }
             if (section == SectionEditTaskMenu.ADD) {
-                if (isNullRequestParameters(title, contentTask, dateTask)) {
-                    jumpError(Constants.TASK_ADD_JSP, Constants.ERR_MESS_ADD_TASK, request, response);
-                } else {
-                    taskDAO.addTask(user, ValidationManager.getTask(title, contentTask, dateTask), section);
-                }
+                taskDAO.addTask(user,ValidationManager.getTask(title, contentTask, dateTask),section);
             } else {
                 String[] arrayId = request.getParameterValues(Constants.KEY_PARAM_EDIT_CHECK);
                 if (arrayId != null) {
+                    if (section == SectionEditTaskMenu.EDIT) {
+
+                    }
                     taskDAO.doEditTask(arrayId, section);
                 } else jump(Constants.TASK_JSP, request, response);
                     /*if (section == SectionEditTaskMenu.EDIT) {
@@ -58,7 +61,7 @@ public class EditTaskController extends AbstractController {
     }
 
     private boolean isNullRequestParameters(String title, String contentTask, String dateTask) {
-        if (title == null && contentTask == null && dateTask == null)
+        if (title == null || contentTask == null || dateTask == null)
             return true;
         return false;
     }
