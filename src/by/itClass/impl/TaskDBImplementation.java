@@ -46,10 +46,9 @@ public class TaskDBImplementation implements ITaskDAO {
         }
     }
 
-    /*public List<Task> getTasks(User user, String dateTask, Enum<?> section) throws Exception {
+    /*public List<Task> getTasks(User user, String[] arrayID) throws Exception {
         List<Task> list = new ArrayList<>();
-        String sql = ((SectionTask) section).getSqlString();
-        System.out.println(sql);
+        String sql = "SELECT * FROM task WHERE idUser = (SELECT * FROM user WHERE login=?) AND id=?";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -58,7 +57,10 @@ public class TaskDBImplementation implements ITaskDAO {
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
-            preparedStatement.setDate(2, ValidationManager.getValidateDate(dateTask));
+            for (int i = 0; i < arrayID.length; i++) {
+                if ()
+            }
+
             resultSet = preparedStatement.executeQuery();
             list.addAll(getListFromResultSet(resultSet));
             return list;
@@ -101,11 +103,19 @@ public class TaskDBImplementation implements ITaskDAO {
         try {
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
-            preparedStatement.setString(SQLQuery.TITLE_POSITION, task.getTitle());
-            preparedStatement.setString(SQLQuery.CONTENT_POSITION, task.getContentTask());
-            preparedStatement.setDate(SQLQuery.DATE_POSITION, task.getDateTask());
-            preparedStatement.execute();
+            System.out.println(preparedStatement);
+            if (sect == SectionEditTaskMenu.ADD) {
+                preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
+                preparedStatement.setString(SQLQuery.TITLE_POSITION, task.getTitle());
+                preparedStatement.setString(SQLQuery.CONTENT_POSITION, task.getContentTask());
+                preparedStatement.setDate(SQLQuery.DATE_POSITION, task.getDateTask());
+            } else {
+                preparedStatement.setString(SQLQuery.CONTENT_EDIT_POSITION, task.getContentTask());
+                preparedStatement.setDate(SQLQuery.DATE_EDIT_POSITION, task.getDateTask());
+                preparedStatement.setInt(SQLQuery.ID_EDIT_POSITION, task.getId());
+                System.out.println(preparedStatement);
+            }
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException();
         } finally {

@@ -29,40 +29,28 @@ public class EditTaskController extends AbstractController {
         String contentTask = request.getParameter(Constants.PARAM_CONTENT_TASK);
         String dateTask = request.getParameter(Constants.PARAM_DATE_TASK);
 
+
         try {
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
             Enum<?> section = TaskFactory.getKindSectionEditTask(paramEdit);
-            System.out.println("EditCon: " + paramEdit.toUpperCase());
-            System.out.println(section.name());
-            if (isNullRequestParameters(title, contentTask, dateTask)) {
-                if (section == SectionEditTaskMenu.ADD)
-                    jumpError(Constants.TASK_ADD_JSP, Constants.ERR_INPUT_EMPTY, request, response);
-                else jumpError(Constants.TASK_JSP, Constants.ERR_INPUT_EMPTY, request, response);
-            }
-            if (section == SectionEditTaskMenu.ADD) {
-                taskDAO.addTask(user,ValidationManager.getTask(title, contentTask, dateTask),section);
+            if (section == SectionEditTaskMenu.ADD || section == SectionEditTaskMenu.EDIT) {
+                Task task = ValidationManager.getTask(title, contentTask, dateTask);
+                if (section == SectionEditTaskMenu.EDIT) {
+                    String id = request.getParameter(Constants.PARAM_ID_TASK);
+                    task.setId(id);
+                }
+                taskDAO.addTask(user,task,section);
             } else {
                 String[] arrayId = request.getParameterValues(Constants.KEY_PARAM_EDIT_CHECK);
                 if (arrayId != null) {
-                    if (section == SectionEditTaskMenu.EDIT) {
 
-                    }
                     taskDAO.doEditTask(arrayId, section);
                 } else jump(Constants.TASK_JSP, request, response);
-                    /*if (section == SectionEditTaskMenu.EDIT) {
-                    taskDAO.doEditTask(request.getParameterValues(Constants.PARAM_CHECKBOX),
-                            new TaskDBImplementation().getTasks(user, dateTask, section), section);*/
             }
             jump(Constants.TASK_CONTROLLER, request, response);
         } catch (Exception e) {
-            System.out.println(3);
+            System.out.println("Exception in EditTaskController");
             jumpError(Constants.TASK_JSP, e.getMessage(), request, response);
         }
-    }
-
-    private boolean isNullRequestParameters(String title, String contentTask, String dateTask) {
-        if (title == null || contentTask == null || dateTask == null)
-            return true;
-        return false;
     }
 }

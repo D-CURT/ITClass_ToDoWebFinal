@@ -5,28 +5,27 @@
     <title>Edit Task</title>
 </head>
 <body>
-    <%@include file="searchTask.jsp"%>
-    <hr>
-    <form action="edit" name="edit" method="post">
-        <input type="hidden" name="<%=Constants.KEY_PARAM_EDIT%>" value="edit">
-        <table border="1">
-            <c:forEach items="${listTask}" var="task">
-                <form action="edit" name="edit" method="post">
-                    <input type="hidden" name="<%=Constants.KEY_PARAM_EDIT%>" value="edit">
-                    <tr>
-                        <td><input type="checkbox" name="<%=Constants.PARAM_CHECKBOX%>" value="${task.id}"></td>
-                        <td><input type="text" name="<%=Constants.PARAM_TITLE_TASK%>" value="${task.title}"></td>
-                        <td><input type="date" name="<%=Constants.PARAM_DATE_TASK%>" value=""></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="<%=Constants.PARAM_CONTENT_TASK%>" value="${task.contentTask}"></td>
-                    </tr>
-                </form>
-            </c:forEach>
-            <tr>
-                <td><input type="submit" value="Edit"></td>
-            </tr>
-        </table>
-    </form>
+<form name="editTaskForm" method="post" action='<c:url value="/edit"/>'>
+    <input type="hidden" name="id" value="${param.id}">
+    <input type="hidden" name="paramEdit" value="edit">
+    <table>
+        <tr>
+            <td>Edit Task</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="contentTask" value="${param.contentTask}">
+            </td>
+            <td>
+                <input type="Date" name="dateTask" value="${task.dateTask}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Edit Task">
+            </td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>

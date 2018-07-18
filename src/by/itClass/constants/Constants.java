@@ -13,6 +13,7 @@ public final class Constants {
     public static final String PARAM_TITLE_TASK = "title";
     public static final String PARAM_CONTENT_TASK = "contentTask";
     public static final String PARAM_DATE_TASK = "dateTask";
+    public static final String PARAM_ID_TASK = "id";
 
     //Application constants
     public static final String INDEX_JSP = "/index.jsp";
