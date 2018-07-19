@@ -10,7 +10,7 @@ public final class SQLQuery {
     public static final String WHERE_SOMEDAY_LIST_TASK = "AND dateTask > DATE_ADD(curdate(), INTERVAL 1 DAY) AND flagFix = 0 AND flagRecycle = 0";
     public static final String WHERE_FIX_LIST_TASK = "AND flagFix = 1 AND flagRecycle = 0";
     public static final String WHERE_RECYCLE_LIST_TASK = "AND flagRecycle = 1";
-    public static final String WHERE_OLD_LIST_TASK = "AND dateTask < curdate() AND flagFix = 0 AND flagRecycle = 0";
+    public static final String WHERE_OLD_TASK = "AND dateTask < curdate() AND flagFix = 0 AND flagRecycle = 0";
     public static final String WHERE_CHOSEN_TASK = "AND dateTask=? AND flagFix = 0 AND flagRecycle = 0";
 
     public static final String NAME_FIELD_ID = "id";
@@ -26,6 +26,7 @@ public final class SQLQuery {
     public static final String EDIT_TASK = "UPDATE task SET contentTask=?, dateTask=? WHERE id=?";
     public static final String FIX_TASK = "UPDATE task SET flagFix=1 WHERE id=?";
     public static final String MOVE_TASK_TO_RECYCLE_BIN = "UPDATE task SET flagRecycle=1 WHERE id=?";
+    public static final String MOVE_OLD_TASK_TO_RECYCLE_BIN = "UPDATE task SET flagRecycle=1 WHERE idUser = (SELECT id FROM user WHERE login=?) AND dateTask < curdate()";
     public static final String REMOVE_TASK = "DELETE FROM task WHERE id=?";
     public static final String RESTORE_TASK = "UPDATE task SET flagRecycle=0 WHERE id=?";
 

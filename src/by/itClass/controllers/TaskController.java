@@ -11,6 +11,7 @@ import by.itClass.constants.Constants;
 import by.itClass.factory.TaskFactory;
 import by.itClass.impl.TaskDBImplementation;
 import by.itClass.interfaces.ITaskDAO;
+import by.itClass.model.beans.OldTaskCollector;
 import by.itClass.model.beans.User;
 import by.itClass.section.SectionTask;
 
@@ -30,6 +31,7 @@ public class TaskController extends AbstractController {
 
         try {
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
+            OldTaskCollector collector = OldTaskCollector.getInstance(user);
             Enum<?> sectionTask = TaskFactory.getKindSectionTask(paramList);
             System.out.println("TaskCon: " + paramList.toUpperCase());
             /*if (sectionTask == SectionTask.CHOSEN) {
