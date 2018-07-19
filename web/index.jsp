@@ -4,7 +4,7 @@
     <%--<link rel="stylesheet" type="text/css" href="<c:url value='Content/css/style.css'/>">--%>
     <title>To Do Web Final</title>
       <style>
-          <%@include file='Content/css/style.css' %>
+          <%@include file='Content/css/style.css'%>
       </style>
   </head>
 

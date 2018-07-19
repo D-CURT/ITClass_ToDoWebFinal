@@ -10,6 +10,7 @@ public final class SQLQuery {
     public static final String WHERE_SOMEDAY_LIST_TASK = "AND dateTask > DATE_ADD(curdate(), INTERVAL 1 DAY) AND flagFix = 0 AND flagRecycle = 0";
     public static final String WHERE_FIX_LIST_TASK = "AND flagFix = 1 AND flagRecycle = 0";
     public static final String WHERE_RECYCLE_LIST_TASK = "AND flagRecycle = 1";
+    public static final String WHERE_OLD_LIST_TASK = "AND dateTask < curdate() AND flagFix = 0 AND flagRecycle = 0";
     public static final String WHERE_CHOSEN_TASK = "AND dateTask=? AND flagFix = 0 AND flagRecycle = 0";
 
     public static final String NAME_FIELD_ID = "id";

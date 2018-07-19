@@ -3,12 +3,15 @@
 <html>
 <head>
     <title>Task</title>
+    <style>
+        <%@include file='Content/css/style.css'%>
+    </style>
 </head>
 <body>
-
-<c:if test="${not empty errorMessage}">
-    <p style="color: red"><c:out value="${errorMessage}"/></p>
-</c:if>
+<div class="wrapper">
+    <c:if test="${not empty errorMessage}">
+        <p style="color: red"><c:out value="${errorMessage}"/></p>
+    </c:if>
 
     <%@ include file="header.jsp"%>
     <hr>
@@ -19,5 +22,6 @@
     <%@include file="editTaskMenu.jsp"%>
     <hr>
     <%@include file="footer.jsp"%>
+</div>
 </body>
 </html>
