@@ -20,17 +20,14 @@ public class OldTaskCollector {
         TaskDBImplementation tmp = new TaskDBImplementation();
         try {
             dateTask = tmp.getOldTaskDate(user);
-            localInstance = instance;
-            if (localInstance == null) {
-                synchronized (OldTaskCollector.class) {
-                    localInstance = instance;
-                    if (localInstance == null) {
-                        tmp.moveOldTaskToTrash(user);
-                        return instance = localInstance = new OldTaskCollector(dateTask);
-                    }
+            synchronized (OldTaskCollector.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    tmp.moveOldTaskToTrash(user);
+                    return instance = localInstance = new OldTaskCollector(dateTask);
+                } else if (dateTask.compareTo(instance.date) == 1) {
+                    return instance = new OldTaskCollector(dateTask);
                 }
-            } else if (dateTask.compareTo(instance.date) == 1) {
-                return instance = new OldTaskCollector(dateTask);
             }
         } catch (SQLException e) {
             e.printStackTrace();
