@@ -23,22 +23,45 @@ import java.util.concurrent.Callable;
 public class TaskDBImplementation implements ITaskDAO {
     @Override
     public List<Task> getTasks(User user, Enum<?> section) throws Exception {
+        System.out.println("\nIn DAO method getTasks();");
+
         List<Task> list = new ArrayList<>();
         String sql = ((SectionTask) section).getSqlString();
+
+        System.out.println("getTasks(): query taken:\n" + sql);
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
         try {
+            System.out.println("getTasks(): in try block;");
+
             connection = ConnectionManager.createConnection();
+
+            System.out.println("getTasks(): connection taken;");
+
             preparedStatement = connection.prepareStatement(sql);
+
+            System.out.println("getTasks(): statement taken;");
+
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
+
+            System.out.println("getTasks(): login in query set;");
+
+            System.out.println("getTasks(): query in statement now is:");
             System.out.println(preparedStatement);
+
             resultSet = preparedStatement.executeQuery();
+
+            System.out.println("getTasks(): resultSet taken;");
+
             list.addAll(getListFromResultSet(resultSet));
+
+            System.out.println("getTasks(): list taken;");
             return list;
         } catch (SQLException e) {
+            System.out.println("getTasks(): exception;");
             throw new SQLException();
         } finally {
             ConnectionManager.closeResultSet(resultSet);
@@ -49,12 +72,19 @@ public class TaskDBImplementation implements ITaskDAO {
 
     @Override
     public void addTask(User user, Task task, Enum<?> section) throws Exception {
+        System.out.println("\nIn DAO method addTask();");
+
         SectionEditTaskMenu sect = (SectionEditTaskMenu) section;
         String sql = sect.getSqlString();
+
+        System.out.println("addTask(): query taken:\n" + sql);
+
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
         try {
+            System.out.println("addTask(): in try block;");
+
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
             System.out.println(preparedStatement);
@@ -69,8 +99,12 @@ public class TaskDBImplementation implements ITaskDAO {
                 preparedStatement.setInt(SQLQuery.ID_EDIT_POSITION, task.getId());
                 System.out.println(preparedStatement);
             }
+            System.out.println("addTask(): query in statement now is:");
+            System.out.println(preparedStatement);
+
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
+            System.out.println("addTask(): exception;");
             throw new SQLException();
         } finally {
             ConnectionManager.closeStatement(preparedStatement);
@@ -80,20 +114,29 @@ public class TaskDBImplementation implements ITaskDAO {
 
     @Override
     public void doEditTask(String[] arrayId, Enum<?> section) throws Exception {
+        System.out.println("\nIn DAO method doEditTask();");
+
         String sql = ((SectionEditTaskMenu) section).getSqlString();
+
+        System.out.println("doEditTask(): query taken:\n" + sql);
+
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
         try {
-            System.out.println(1);
+            System.out.println("doEditTask(): in try block;");
+
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
+
             for (String id: arrayId) {
                 int idTask = Integer.parseInt(id);
                 preparedStatement.setInt(SQLQuery.ID_TASK_POSITION, idTask);
                 preparedStatement.executeUpdate();
             }
+            System.out.println("doEditTask(): edit completed;");
         } catch (SQLException e) {
+            System.out.println("doEditTask(): exception;");
             throw new SQLException();
         } finally {
             ConnectionManager.closeStatement(preparedStatement);
@@ -102,6 +145,7 @@ public class TaskDBImplementation implements ITaskDAO {
     }
 
     private static List<Task> getListFromResultSet(ResultSet resultSet) throws SQLException {
+        System.out.println("\nIn DAO method getListFromResultSet();");
         List<Task> list = new ArrayList<>();
         try {
             while (resultSet.next()) {
@@ -115,6 +159,7 @@ public class TaskDBImplementation implements ITaskDAO {
             }
             return list;
         } catch (SQLException e) {
+            System.out.println("getListFromResultSet(): exception;");
             throw new SQLException();
         } finally {
             ConnectionManager.closeResultSet(resultSet);
@@ -122,24 +167,25 @@ public class TaskDBImplementation implements ITaskDAO {
     }
 
     public void moveOldTaskToTrash(User user) throws SQLException {
+        System.out.println("\nIn DAO method moveOldTaskToTrash();");
         String sql = SQLQuery.MOVE_OLD_TASK_TO_RECYCLE_BIN;
 
+        System.out.println("moveOldTaskToTrash(): query taken:\n" + sql);
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
 
         try {
+            System.out.println("moveOldTaskToTrash(): in try block;");
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
-            System.out.println(preparedStatement);
-            preparedStatement.execute();
-            /*resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                resultSet.e
-            }*/
 
+            System.out.println("moveOldTaskToTrash(): query in statement now is:");
+            System.out.println(preparedStatement);
+
+            preparedStatement.execute();
         } catch (SQLException e) {
+            System.out.println("moveOldTaskToTrash(): exception;");
             throw new SQLException();
         } finally {
             ConnectionManager.closeStatement(preparedStatement);
@@ -148,21 +194,32 @@ public class TaskDBImplementation implements ITaskDAO {
     }
 
     public boolean searchOldTask(User user) throws SQLException {
+        System.out.println("\nIn DAO method searchOldTask();");
+
         String sql = SQLQuery.SELECT_LIST_TASK + SQLQuery.WHERE_OLD_TASK;
+
+        System.out.println("searchOldTask(): query taken:\n" + sql);
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
         try {
+            System.out.println("searchOldTask(): in try block;");
+
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
+
+            System.out.println("searchOldTask(): query in statement now is:");
             System.out.println(preparedStatement);
+
             resultSet = preparedStatement.executeQuery();
+            System.out.println("searchOldTask(): resultSet taken;");
             if (resultSet.next()) return true;
             else return false;
         } catch (SQLException e) {
+            System.out.println("searchOldTask(): exception;");
             throw new SQLException();
         } finally {
             ConnectionManager.closeResultSet(resultSet);

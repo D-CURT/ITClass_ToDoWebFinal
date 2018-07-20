@@ -20,27 +20,44 @@ public class TaskController extends AbstractController {
 
     @Override
     public void performTask(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        System.out.println("\nIn TaskController;");
+
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(Constants.KEY_USER);
         session.setAttribute(Constants.KEY_PARAM_LIST, request.getParameter(Constants.KEY_PARAM_LIST));
         String paramList = (String) session.getAttribute(Constants.KEY_PARAM_LIST);
+
+        System.out.println("Task: variables initialized;");
 
         if (paramList == null) {
             paramList = Constants.PARAM_LIST_TODAY;
         }
 
         try {
+            System.out.println("Task: in try block;");
+
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
+
+            System.out.println("Task: DAO initialized;");
+
             TaskDBImplementation tmp = new TaskDBImplementation();
             /*if (tmp.searchOldTask(user)) {
                 tmp.moveOldTaskToTrash(user);
             }*/
             /*OldTaskCollector collector = OldTaskCollector.getInstance(user);*/
             Enum<?> sectionTask = TaskFactory.getKindSectionTask(paramList);
-            System.out.println("TaskCon: " + paramList.toUpperCase());
+
+            System.out.println("Task: section initialized as - " + paramList.toUpperCase());
+
             session.setAttribute(Constants.PARAM_LIST_TASK, taskDAO.getTasks(user, sectionTask));
+
+            System.out.println("Task: session attribute set;");
+
             jump(Constants.TASK_JSP, request, response);
+
+            System.out.println("Task: jump;");
         } catch (Exception e) {
+            System.out.println("Task: exception;");
             e.printStackTrace();
         }
     }
