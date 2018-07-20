@@ -18,7 +18,7 @@
                             <td><c:out value="${task.title}"></c:out></td>
                             <td><c:out value="${task.dateTask}"></c:out></td>
                             <td><c:out value="${task.contentTask}"></c:out></td>
-                            <td><input type="button" value="Edit" onclick="JavaScript:sendToEditTask(${task.id},${task.contentTask})"></td>
+                            <td><input type="button" value="Edit" onclick="JavaScript:sendToEditTask(${task.id},${task.title},${task.contentTask})"></td>
                         </tr>
                     </c:forEach>
                 </table>

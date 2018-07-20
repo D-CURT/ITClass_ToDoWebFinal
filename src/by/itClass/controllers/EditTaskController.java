@@ -28,7 +28,7 @@ public class EditTaskController extends AbstractController {
         String title = request.getParameter(Constants.PARAM_TITLE_TASK);
         String contentTask = request.getParameter(Constants.PARAM_CONTENT_TASK);
         String dateTask = request.getParameter(Constants.PARAM_DATE_TASK);
-
+        System.out.println(1);
 
         try {
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();

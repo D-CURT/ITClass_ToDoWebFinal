@@ -14,6 +14,9 @@
         </tr>
         <tr>
             <td>
+                <input type="text" name="title" value="${param.title}">
+            </td>
+            <td>
                 <input type="text" name="contentTask" value="${param.contentTask}">
             </td>
             <td>

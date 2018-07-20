@@ -34,14 +34,8 @@ public class TaskController extends AbstractController {
             OldTaskCollector collector = OldTaskCollector.getInstance(user);
             Enum<?> sectionTask = TaskFactory.getKindSectionTask(paramList);
             System.out.println("TaskCon: " + paramList.toUpperCase());
-            /*if (sectionTask == SectionTask.CHOSEN) {
-                String dateTask = request.getParameter(Constants.PARAM_DATE_TASK);
-                session.setAttribute(Constants.PARAM_LIST_TASK, new TaskDBImplementation().getTasks(user, dateTask, sectionTask));
-                jump(Constants.TASK_EDIT_JSP, request, response);
-            } else {*/
-                session.setAttribute(Constants.PARAM_LIST_TASK, taskDAO.getTasks(user, sectionTask));
-                jump(Constants.TASK_JSP, request, response);
-           /* }*/
+            session.setAttribute(Constants.PARAM_LIST_TASK, taskDAO.getTasks(user, sectionTask));
+            jump(Constants.TASK_JSP, request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,8 +1,5 @@
 function sendNextForm(flag) {
     document.next.paramList.value = flag;
-    /*if (document.next.paramList == 'recycle') {
-        document.checker.flagCheck.value = 'can_restore';
-    }*/
     document.next.submit();
 }
 
@@ -12,7 +9,12 @@ function sendEditForm(flag) {
     document.editForm.submit();
 }
 
-function sendToEditTask(id ,contentTask) {
+function sendToEditTask(id, title, contentTask) {
+    var tmp_title = document.createElement("input");
+    tmp_title.type = "hidden";
+    tmp_title.name = "title";
+    tmp_title.value = title;
+
     var tmp_contentTask = document.createElement("input");
     tmp_contentTask.type = "hidden";
     tmp_contentTask.name = "contentTask";
@@ -28,6 +30,7 @@ function sendToEditTask(id ,contentTask) {
     tmp_form.action = "editTask.jsp";
     tmp_form.method = "post";
 
+    tmp_form.appendChild(tmp_title);
     tmp_form.appendChild(tmp_contentTask);
     tmp_form.appendChild(tmp_IDTask);
     document.body.appendChild(tmp_form);
