@@ -1,6 +1,5 @@
 package by.itClass.impl;
 
-import by.itClass.constants.Constants;
 import by.itClass.section.SectionEditTaskMenu;
 import by.itClass.section.SectionTask;
 import by.itClass.constants.SQLQuery;
@@ -8,17 +7,9 @@ import by.itClass.interfaces.ITaskDAO;
 import by.itClass.model.beans.ConnectionManager;
 import by.itClass.model.beans.Task;
 import by.itClass.model.beans.User;
-import by.itClass.valid.ValidationManager;
-
-import java.io.InputStream;
-import java.io.Reader;
-import java.math.BigDecimal;
-import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.Callable;
 
 public class TaskDBImplementation implements ITaskDAO {
     @Override
@@ -193,33 +184,36 @@ public class TaskDBImplementation implements ITaskDAO {
         }
     }
 
-    public boolean searchOldTask(User user) throws SQLException {
-        System.out.println("\nIn DAO method searchOldTask();");
+    public Date getOldTaskDate(User user) throws SQLException {
+        System.out.println("\nIn DAO method getOldTaskDate();");
 
         String sql = SQLQuery.SELECT_LIST_TASK + SQLQuery.WHERE_OLD_TASK;
 
-        System.out.println("searchOldTask(): query taken:\n" + sql);
+        System.out.println("getOldTaskDate(): query taken:\n" + sql);
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
         try {
-            System.out.println("searchOldTask(): in try block;");
+            System.out.println("getOldTaskDate(): in try block;");
 
+            Date dateTask = null;
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
 
-            System.out.println("searchOldTask(): query in statement now is:");
+            System.out.println("getOldTaskDate(): query in statement now is:");
             System.out.println(preparedStatement);
 
             resultSet = preparedStatement.executeQuery();
-            System.out.println("searchOldTask(): resultSet taken;");
-            if (resultSet.next()) return true;
-            else return false;
+            System.out.println("getOldTaskDate(): resultSet taken;");
+            if (resultSet.next()) {
+                dateTask = resultSet.getDate(SQLQuery.NAME_FIELD_DATE);
+                return dateTask;
+            } else return dateTask;
         } catch (SQLException e) {
-            System.out.println("searchOldTask(): exception;");
+            System.out.println("getOldTaskDate(): exception;");
             throw new SQLException();
         } finally {
             ConnectionManager.closeResultSet(resultSet);
