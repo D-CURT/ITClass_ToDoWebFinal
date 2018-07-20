@@ -31,7 +31,11 @@ public class TaskController extends AbstractController {
 
         try {
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
-            OldTaskCollector collector = OldTaskCollector.getInstance(user);
+            TaskDBImplementation tmp = new TaskDBImplementation();
+            /*if (tmp.searchOldTask(user)) {
+                tmp.moveOldTaskToTrash(user);
+            }*/
+            /*OldTaskCollector collector = OldTaskCollector.getInstance(user);*/
             Enum<?> sectionTask = TaskFactory.getKindSectionTask(paramList);
             System.out.println("TaskCon: " + paramList.toUpperCase());
             session.setAttribute(Constants.PARAM_LIST_TASK, taskDAO.getTasks(user, sectionTask));
