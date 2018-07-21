@@ -157,6 +157,7 @@ public class TaskDBImplementation implements ITaskDAO {
         }
     }
 
+    @Override
     public void moveOldTaskToTrash(User user) throws SQLException {
         System.out.println("\nIn DAO method moveOldTaskToTrash();");
         String sql = SQLQuery.MOVE_OLD_TASK_TO_RECYCLE_BIN;
@@ -184,6 +185,7 @@ public class TaskDBImplementation implements ITaskDAO {
         }
     }
 
+    @Override
     public Date getOldTaskDate(User user) throws SQLException {
         System.out.println("\nIn DAO method getOldTaskDate();");
 
