@@ -40,7 +40,7 @@ public class TaskController extends AbstractController {
 
             System.out.println("Task: DAO initialized;");
 
-            //taskDAO.moveOldTaskToTrash(user);
+            taskDAO.moveOldTaskToTrash(user);
 
             /*OldTaskManager manager = OldTaskManager.getInstance(user, taskDAO);
             System.out.println("Task: oldTaskManager initialized as:\n" + manager);*/
