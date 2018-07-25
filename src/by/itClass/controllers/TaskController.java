@@ -25,7 +25,7 @@ public class TaskController extends AbstractController {
         User user = (User) session.getAttribute(Constants.KEY_USER);
         session.setAttribute(Constants.KEY_PARAM_LIST, request.getParameter(Constants.KEY_PARAM_LIST));
         String paramList = (String) session.getAttribute(Constants.KEY_PARAM_LIST);
-        Date dateOldTask;
+        //Date dateOldTask;
 
         System.out.println("Task: variables initialized;");
 

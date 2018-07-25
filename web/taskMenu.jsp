@@ -8,7 +8,6 @@
 <body>
 <form action="edit" name="editForm" method="POST">
     <input type="hidden" name="<%=Constants.KEY_PARAM_EDIT%>" value="">
-    ${paramEdit}
 </form>
 <form action="task" name="next" value="" method="POST">
     <input type="hidden" name="<%= Constants.KEY_PARAM_LIST%>" value="">
