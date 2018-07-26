@@ -51,7 +51,6 @@ public class EditTaskController extends AbstractController {
 
                     String id = request.getParameter(Constants.PARAM_ID_TASK);
                     System.out.println("Edit: id parameter is taken;");
-                    System.out.println("Edit: " + id);
 
                     task.setId(id);
                     System.out.println("Edit: id for task is set;");

@@ -36,12 +36,10 @@ public class Task {
     }
 
     public void setId(int id) {
-        System.out.println("in int setId(): " + id);
         this.id = id;
     }
 
     public void setId(String id) throws NumberFormatException {
-        System.out.println("in string setId(): " + id);
         try {
             this.id = Integer.parseInt(id);
         } catch (NumberFormatException e) {

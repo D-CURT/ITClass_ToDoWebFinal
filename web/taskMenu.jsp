@@ -14,7 +14,7 @@
             <td><a href="JavaScript:sendChangedData('tomorrow')">Tomorrow</a></td>
             <td><a href="JavaScript:sendChangedData('someday')">Someday</a></td>
             <td><a href="JavaScript:sendChangedData('fixed')">Fixed</a></td>
-            <td><a href="JavaScript:sendChangedData('recycle')">Trash</a></td>
+            <td><a href="JavaScript:sendChangedData('recycle')">Recycle Bin</a></td>
         </tr>
     </table>
 </form>

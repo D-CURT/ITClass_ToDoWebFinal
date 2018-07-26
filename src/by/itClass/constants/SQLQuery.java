@@ -24,6 +24,7 @@ public final class SQLQuery {
     public static final String ADD_TASK = "INSERT INTO task (idUser, contentTask, dateTask) VALUES ((SELECT id FROM user WHERE login=?),?,?,?)";
     public static final String EDIT_TASK = "UPDATE task SET contentTask=?, dateTask=? WHERE id=?";
     public static final String FIX_TASK = "UPDATE task SET flagFix=1 WHERE id=?";
+    public static final String UNFIX_TASK = "UPDATE task SET flagFix=0 WHERE id=?";
     public static final String MOVE_TASK_TO_RECYCLE_BIN = "UPDATE task SET flagRecycle=1 WHERE id=?";
     public static final String MOVE_OLD_TASK_TO_RECYCLE_BIN = "UPDATE task SET flagRecycle=1 WHERE idUser = (SELECT id FROM user WHERE login=?) AND dateTask < curdate()";
     public static final String REMOVE_TASK = "DELETE FROM task WHERE id=?";
