@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июл 26 2018 г., 22:12
+-- Время создания: Июл 27 2018 г., 00:50
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -29,21 +29,22 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `task` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idUser` int(11) NOT NULL,
+  `titleTask` varchar(50) NOT NULL,
   `contentTask` varchar(255) NOT NULL,
   `dateTask` date NOT NULL,
   `flagFix` int(11) NOT NULL DEFAULT '0',
   `flagRecycle` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Дамп данных таблицы `task`
 --
 
-INSERT INTO `task` (`id`, `idUser`, `contentTask`, `dateTask`, `flagFix`, `flagRecycle`) VALUES
-(1, 1, 'First task', '2018-07-26', 0, 0),
-(2, 1, 'Second task', '2018-07-27', 0, 0),
-(3, 1, 'Theard task', '2018-07-28', 0, 0);
+INSERT INTO `task` (`id`, `idUser`, `titleTask`, `contentTask`, `dateTask`, `flagFix`, `flagRecycle`) VALUES
+(1, 1, 'First Task', '111', '2018-07-26', 0, 0),
+(2, 1, 'Second task', '222', '2018-07-27', 0, 0),
+(3, 1, 'Theard task', '333', '2018-07-28', 0, 0);
 
 -- --------------------------------------------------------
 
