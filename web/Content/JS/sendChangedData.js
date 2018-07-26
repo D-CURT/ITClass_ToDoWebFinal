@@ -9,7 +9,12 @@ function sendEditForm(flag) {
     document.editForm.submit();
 }
 
-function sendToEditTask(id, contentTask) {
+function sendToEditTask(id, titleTask, contentTask) {
+    var tmp_titleTask = document.createElement("input");
+    tmp_titleTask.type = "hidden";
+    tmp_titleTask.name = "titleTask";
+    tmp_titleTask.value = titleTask;
+
     var tmp_contentTask = document.createElement("input");
     tmp_contentTask.type = "hidden";
     tmp_contentTask.name = "contentTask";
@@ -25,6 +30,7 @@ function sendToEditTask(id, contentTask) {
     tmp_form.action = "editTask.jsp";
     tmp_form.method = "post";
 
+    tmp_form.appendChild(tmp_titleTask);
     tmp_form.appendChild(tmp_contentTask);
     tmp_form.appendChild(tmp_IDTask);
     document.body.appendChild(tmp_form);

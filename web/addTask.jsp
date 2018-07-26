@@ -19,6 +19,7 @@
         <table border="1">
             <tr><td>Add Task</td></tr>
             <tr>
+                <td><input type="text" name="<%= Constants.PARAM_TITLE_TASK%>" value=""></td>
                 <td><input type="text" name="<%= Constants.PARAM_CONTENT_TASK%>" value=""></td>
                 <td><input type="date" name="<%= Constants.PARAM_DATE_TASK%>" value=""></td>
                 <td><input type="submit" value="Add new task"></td>

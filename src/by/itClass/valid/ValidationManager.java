@@ -19,19 +19,19 @@ public class ValidationManager {
         }
     }
 
-    public static boolean isValidDate(String date) {
+    /*public static boolean isValidDate(String date) {
         try {
             date = GET_DATE_FORMAT.format(date.replace(".","-").replace(":","-"));
             return true;
         } catch (Exception e) {
             return false;
         }
-    }
+    }*/
 
-    public static Task getTask(String contentTask, String dateTask) {
+    public static Task getTask(String titleTask, String contentTask, String dateTask) {
         Task task = null;
         Date date = getValidDate(dateTask);
         if (date == null) return task;
-        return new Task(contentTask, date);
+        return new Task(titleTask, contentTask, date);
     }
 }

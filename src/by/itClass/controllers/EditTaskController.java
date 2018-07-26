@@ -26,7 +26,7 @@ public class EditTaskController extends AbstractController {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(Constants.KEY_USER);
         String paramEdit = request.getParameter(Constants.KEY_PARAM_EDIT);
-
+        String titleTask = request.getParameter(Constants.PARAM_TITLE_TASK);
         String contentTask = request.getParameter(Constants.PARAM_CONTENT_TASK);
         String dateTask = request.getParameter(Constants.PARAM_DATE_TASK);
         System.out.println("Edit: variables initialized;");
@@ -42,21 +42,28 @@ public class EditTaskController extends AbstractController {
 
             if (section == SectionEditTaskMenu.ADD || section == SectionEditTaskMenu.EDIT) {
                 System.out.println("Edit: in add/edit block;");
+                if (contentTask == null || dateTask == null)
+                    jumpError(Constants.TASK_JSP, Constants.ERR_INPUT_EMPTY, request, response);
+                else {
+                    if (contentTask.equals(Constants.KEY_EMPTY) || dateTask.equals(Constants.KEY_EMPTY))
+                        jumpError(Constants.TASK_JSP, Constants.ERR_INPUT_EMPTY, request, response);
+                    else {
+                        Task task = ValidationManager.getTask(titleTask, contentTask, dateTask);
+                        System.out.println("Edit: task initialized;");
 
-                Task task = ValidationManager.getTask(contentTask, dateTask);
-                System.out.println("Edit: task initialized;");
+                        if (section == SectionEditTaskMenu.EDIT) {
+                            System.out.println("Edit: in add/edit: in edit block;");
 
-                if (section == SectionEditTaskMenu.EDIT) {
-                    System.out.println("Edit: in add/edit: in edit block;");
+                            String id = request.getParameter(Constants.PARAM_ID_TASK);
+                            System.out.println("Edit: id parameter is taken;");
 
-                    String id = request.getParameter(Constants.PARAM_ID_TASK);
-                    System.out.println("Edit: id parameter is taken;");
-
-                    task.setId(id);
-                    System.out.println("Edit: id for task is set;");
+                            task.setId(id);
+                            System.out.println("Edit: id for task is set;");
+                        }
+                        taskDAO.addTask(user,task,section);
+                        System.out.println("Edit: task added;");
+                    }
                 }
-                taskDAO.addTask(user,task,section);
-                System.out.println("Edit: task added;");
             } else {
                 String[] arrayId = request.getParameterValues(Constants.KEY_PARAM_EDIT_CHECK);
                 System.out.println("Edit: arrayID initialized;");

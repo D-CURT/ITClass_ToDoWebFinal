@@ -81,9 +81,11 @@ public class TaskDBImplementation implements ITaskDAO {
             System.out.println(preparedStatement);
             if (sect == SectionEditTaskMenu.ADD) {
                 preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
+                preparedStatement.setString(SQLQuery.TITLE_POSITION, task.getTitleTask());
                 preparedStatement.setString(SQLQuery.CONTENT_POSITION, task.getContentTask());
                 preparedStatement.setDate(SQLQuery.DATE_POSITION, task.getDateTask());
             } else {
+                preparedStatement.setString(SQLQuery.TITLE_EDIT_POSITION, task.getTitleTask());
                 preparedStatement.setString(SQLQuery.CONTENT_EDIT_POSITION, task.getContentTask());
                 preparedStatement.setDate(SQLQuery.DATE_EDIT_POSITION, task.getDateTask());
                 preparedStatement.setInt(SQLQuery.ID_EDIT_POSITION, task.getId());
@@ -140,11 +142,12 @@ public class TaskDBImplementation implements ITaskDAO {
         try {
             while (resultSet.next()) {
                 int id = resultSet.getInt(SQLQuery.NAME_FIELD_ID);
+                String titleTask = resultSet.getString(SQLQuery.NAME_FIELD_TITLE);
                 String contentTask = resultSet.getString(SQLQuery.NAME_FIELD_CONTENT);
                 Date dateTask = resultSet.getDate(SQLQuery.NAME_FIELD_DATE);
                 int flagFix = resultSet.getInt(SQLQuery.NAME_FIELD_FIXED);
                 int flagRecycle = resultSet.getInt(SQLQuery.NAME_FIELD_RECYCLE);
-                list.add(new Task(id, contentTask, dateTask, flagFix, flagRecycle));
+                list.add(new Task(id, titleTask, contentTask, dateTask, flagFix, flagRecycle));
             }
             return list;
         } catch (SQLException e) {
