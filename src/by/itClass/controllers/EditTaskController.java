@@ -64,7 +64,7 @@ public class EditTaskController extends AbstractController {
 
                     taskDAO.doEditTask(arrayId, section);
                     System.out.println("Edit: task changed;");
-                } else jump(Constants.TASK_JSP, request, response);
+                } else jumpError(Constants.TASK_JSP, "Choose task and try again", request, response);
             }
             jump(Constants.TASK_CONTROLLER, request, response);
             System.out.println("Edit: jump;");
