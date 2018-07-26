@@ -85,6 +85,7 @@ public class TaskDBImplementation implements ITaskDAO {
                 preparedStatement.setString(SQLQuery.CONTENT_POSITION, task.getContentTask());
                 preparedStatement.setDate(SQLQuery.DATE_POSITION, task.getDateTask());
             } else {
+                preparedStatement.setString(SQLQuery.TITLE_POSITION, task.getTitle());
                 preparedStatement.setString(SQLQuery.CONTENT_EDIT_POSITION, task.getContentTask());
                 preparedStatement.setDate(SQLQuery.DATE_EDIT_POSITION, task.getDateTask());
                 preparedStatement.setInt(SQLQuery.ID_EDIT_POSITION, task.getId());

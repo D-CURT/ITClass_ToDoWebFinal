@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Edit Menu</title>
-    <script type="text/javascript" src="Content/JS/sendNextForm.js"></script>
+    <script type="text/javascript" src="Content/JS/sendChangedData.js"></script>
 </head>
 <body>
     <table>

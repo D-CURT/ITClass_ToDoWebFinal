@@ -2,13 +2,12 @@
 <html>
 <head>
     <title>View Task</title>
-    <script type="text/javascript" src="Content/JS/sendNextForm.js"></script>
+    <script type="text/javascript" src="Content/JS/sendChangedData.js"></script>
 </head>
 <body>
 <div class="wrapper">
-    <form action="edit" name="editForm" method="POST">
+    <form action="<c:url value='/edit'/>" name="editForm" method="POST">
         <input type="hidden" name="<%=Constants.KEY_PARAM_EDIT%>" value="">
-        ${paramEdit}
         <c:choose>
             <c:when test="${not empty listTask}">
                 <table border="1px">
@@ -19,7 +18,7 @@
                             <td><c:out value="${task.title}"></c:out></td>
                             <td><c:out value="${task.dateTask}"></c:out></td>
                             <td><c:out value="${task.contentTask}"></c:out></td>
-                            <td><input type="button" value="Edit" onclick="JavaScript:sendToEditTask(${task.id},<%--${task.title},--%>${task.contentTask})"></td>
+                            <td><input type="button" value="Edit" onclick="JavaScript:sendToEditTask(${task.id},${task.title},${task.contentTask})"></td>
                         </tr>
                     </c:forEach>
                 </table>

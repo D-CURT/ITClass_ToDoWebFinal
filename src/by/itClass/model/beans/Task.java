@@ -34,8 +34,8 @@ public class Task {
     }*/
 
     public Task(String title, String contentTask, Date dateTask) {
-        this.contentTask = contentTask;
         this.title = title;
+        this.contentTask = contentTask;
         this.dateTask = dateTask;
     }
 
@@ -96,17 +96,5 @@ public class Task {
 
     public void setFlagRecycle(int flagRecycle) {
         this.flagRecycle = flagRecycle;
-    }
-
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", contentTask='" + contentTask + '\'' +
-                ", dateTask=" + dateTask +
-                ", flagFix=" + flagFix +
-                ", flagRecycle=" + flagRecycle +
-                '}';
     }
 }

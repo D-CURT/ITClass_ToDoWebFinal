@@ -3,21 +3,18 @@
 <html>
 <head>
     <title>Task Menu</title>
-    <script type="text/javascript" src="Content/JS/sendNextForm.js"></script>
+    <script type="text/javascript" src="Content/JS/sendChangedData.js"></script>
 </head>
 <body>
-<form action="edit" name="editForm" method="POST">
-    <input type="hidden" name="<%=Constants.KEY_PARAM_EDIT%>" value="">
-</form>
 <form action="task" name="next" value="" method="POST">
     <input type="hidden" name="<%= Constants.KEY_PARAM_LIST%>" value="">
     <table>
         <tr>
-            <td><a href="JavaScript:sendNextForm('today')">Today</a></td>
-            <td><a href="JavaScript:sendNextForm('tomorrow')">Tomorrow</a></td>
-            <td><a href="JavaScript:sendNextForm('someday')">Someday</a></td>
-            <td><a href="JavaScript:sendNextForm('fixed')">Fixed</a></td>
-            <td><a href="JavaScript:sendNextForm('recycle')">Trash</a></td>
+            <td><a href="JavaScript:sendChangedData('today')">Today</a></td>
+            <td><a href="JavaScript:sendChangedData('tomorrow')">Tomorrow</a></td>
+            <td><a href="JavaScript:sendChangedData('someday')">Someday</a></td>
+            <td><a href="JavaScript:sendChangedData('fixed')">Fixed</a></td>
+            <td><a href="JavaScript:sendChangedData('recycle')">Trash</a></td>
         </tr>
     </table>
 </form>
