@@ -28,10 +28,10 @@ public class ValidationManager {
         }
     }
 
-    public static Task getTask(String title, String contentTask, String dateTask) {
+    public static Task getTask(String contentTask, String dateTask) {
         Task task = null;
         Date date = getValidDate(dateTask);
         if (date == null) return task;
-        return new Task(title, contentTask, date);
+        return new Task(contentTask, date);
     }
 }

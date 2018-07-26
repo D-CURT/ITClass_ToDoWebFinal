@@ -27,7 +27,6 @@ public class EditTaskController extends AbstractController {
         User user = (User) session.getAttribute(Constants.KEY_USER);
         String paramEdit = request.getParameter(Constants.KEY_PARAM_EDIT);
 
-        String title = request.getParameter(Constants.PARAM_TITLE_TASK);
         String contentTask = request.getParameter(Constants.PARAM_CONTENT_TASK);
         String dateTask = request.getParameter(Constants.PARAM_DATE_TASK);
         System.out.println("Edit: variables initialized;");
@@ -44,7 +43,7 @@ public class EditTaskController extends AbstractController {
             if (section == SectionEditTaskMenu.ADD || section == SectionEditTaskMenu.EDIT) {
                 System.out.println("Edit: in add/edit block;");
 
-                Task task = ValidationManager.getTask(title, contentTask, dateTask);
+                Task task = ValidationManager.getTask(contentTask, dateTask);
                 System.out.println("Edit: task initialized;");
 
                 if (section == SectionEditTaskMenu.EDIT) {
@@ -52,6 +51,7 @@ public class EditTaskController extends AbstractController {
 
                     String id = request.getParameter(Constants.PARAM_ID_TASK);
                     System.out.println("Edit: id parameter is taken;");
+                    System.out.println("Edit: " + id);
 
                     task.setId(id);
                     System.out.println("Edit: id for task is set;");
