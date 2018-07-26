@@ -1,5 +1,5 @@
-<%@ page import="by.itClass.constants.Constants" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="by.itClass.constants.Constants" %>
 <html>
 <head>
     <title>Search task</title>

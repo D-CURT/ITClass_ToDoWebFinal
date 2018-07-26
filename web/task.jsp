@@ -11,14 +11,16 @@
 <div class="wrapper">
     <%@ include file="header.jsp"%>
     <hr>
-    <%@ include file="taskMenu.jsp"%>
-    <br>
-    <c:if test="${not empty errorMessage}">
-        <p style="color: red"><c:out value="${errorMessage}"/></p>
-    </c:if>
-    <%@ include file="viewTask.jsp"%>
-    <br>
-    <%@include file="editTaskMenu.jsp"%>
+    <div class="content">
+        <%@ include file="taskMenu.jsp"%>
+        <br>
+        <c:if test="${not empty errorMessage}">
+            <p style="color: red"><c:out value="${errorMessage}"/></p>
+        </c:if>
+        <%@ include file="viewTask.jsp"%>
+        <br>
+        <%@include file="editTaskMenu.jsp"%>
+    </div>
     <hr>
     <%@include file="footer.jsp"%>
 </div>

@@ -5,7 +5,6 @@
     <script type="text/javascript" src="Content/JS/sendChangedData.js"></script>
 </head>
 <body>
-<div class="wrapper">
     <form action="<c:url value='/edit'/>" name="editForm" method="POST">
         <input type="hidden" name="<%=Constants.KEY_PARAM_EDIT%>" value="">
         <c:choose>
@@ -27,8 +26,5 @@
             </c:otherwise>
         </c:choose>
     </form>
-</div>
-
-
 </body>
 </html>

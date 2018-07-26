@@ -5,17 +5,22 @@
 <html>
 <head>
     <title>Login</title>
+    <style>
+        <%@include file='Content/css/style.css'%>
+    </style>
 </head>
 <body>
-
-<form name="loginForm" action="login" method="POST">
-    <h1>Login</h1>
-    <hr>
-    <input type="text" name="<%= Constants.KEY_LOGIN%>" value="" placeholder="login">
-    <input type="password" name="<%= Constants.KEY_PASSWORD%>" value="" placeholder="password">
-    <input type="submit" name="Sign in" value="Sign in">
-    <hr>
-</form>
-<input type="hidden" name="paramList" value="today">
+<div class="wrapper">
+    <form name="loginForm" action="login" method="POST">
+        <h1>Login</h1>
+        <hr>
+        <div class="content">
+            <input type="text" name="<%= Constants.KEY_LOGIN%>" value="" placeholder="<%=Constants.KEY_LOGIN%>">
+            <input type="password" name="<%= Constants.KEY_PASSWORD%>" value="" placeholder="<%=Constants.KEY_PASSWORD%>">
+            <input type="submit" name="Sign in" value="Sign in">
+        </div>
+        <hr>
+    </form>
+</div>
 </body>
 </html>
