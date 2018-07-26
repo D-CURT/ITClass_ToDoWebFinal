@@ -28,7 +28,7 @@ public class Task {
         this.dateTask = dateTask;
     }
 
-    public Task(String titleTask,String contentTask, Date dateTask) {
+    public Task(String titleTask, String contentTask,Date dateTask) {
         this.titleTask = titleTask;
         this.contentTask = contentTask;
         this.dateTask = dateTask;
@@ -70,8 +70,6 @@ public class Task {
     public Date getDateTask() {
         return dateTask;
     }
-
-
 
     public void setDateTask(Date dateTask) {
         this.dateTask = dateTask;
