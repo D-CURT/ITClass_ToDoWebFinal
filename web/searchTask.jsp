@@ -10,7 +10,6 @@
         <input type="hidden" name="<%= Constants.KEY_PARAM_LIST%>" value="<%=Constants.PARAM_LIST_CHOSEN%>">
         <table border="1">
             <tr>
-                <td>Enter date for searching: </td>
                 <td><input type="date" name="<%=Constants.PARAM_DATE_TASK%>" value=""></td>
                 <td><input type="submit" value="Search"></td>
             </tr>
