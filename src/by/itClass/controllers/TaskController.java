@@ -49,6 +49,10 @@ public class TaskController extends AbstractController {
 
             System.out.println("Task: section initialized as - " + paramList.toUpperCase());
 
+            if (paramList.equals("fixed")) session.setAttribute("fixMark", "1");
+            else session.setAttribute("fixMark", null);
+            if (paramList.equals("recycle")) session.setAttribute("recycleMark", "1");
+            else session.setAttribute("recycleMark", null);
             session.setAttribute(Constants.PARAM_LIST_TASK, taskDAO.getTasks(user, sectionTask));
 
             System.out.println("Task: session attribute set;");
