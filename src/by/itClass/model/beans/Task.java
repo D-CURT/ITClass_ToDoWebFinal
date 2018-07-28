@@ -90,16 +90,4 @@ public class Task {
     public void setFlagRecycle(int flagRecycle) {
         this.flagRecycle = flagRecycle;
     }
-
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", titleTask='" + titleTask + '\'' +
-                ", contentTask='" + contentTask + '\'' +
-                ", dateTask=" + dateTask +
-                ", flagFix=" + flagFix +
-                ", flagRecycle=" + flagRecycle +
-                '}';
-    }
 }

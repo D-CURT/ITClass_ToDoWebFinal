@@ -27,6 +27,7 @@ public final class Constants {
     public static final String ERR_LOGIN = "Incorrect login or password";
     public static final String ERR_INPUT_EMPTY = "Field is empty";
     public static final String ERR_REG_LOGIN = "The login already in use.";
+    public static final String ERR_OLD_DATE_CHOSEN = "Choose current date or later";
 
     public static final String KEY_EMPTY = "";
     public static final String KEY_USER = "user";

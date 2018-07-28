@@ -19,7 +19,6 @@ public class TaskDBImplementation implements ITaskDAO {
 
         List<Task> list = new ArrayList<>();
         String sql = ((SectionTask) section).getSqlString();
-
         System.out.println("getTasks(): query taken:\n" + sql);
 
         Connection connection = null;
@@ -30,15 +29,12 @@ public class TaskDBImplementation implements ITaskDAO {
             System.out.println("getTasks(): in try block;");
 
             connection = ConnectionManager.createConnection();
-
             System.out.println("getTasks(): connection taken;");
 
             preparedStatement = connection.prepareStatement(sql);
-
             System.out.println("getTasks(): statement taken;");
 
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
-
             System.out.println("getTasks(): login in query set;");
 
             System.out.println("getTasks(): query in statement now is:");
@@ -70,7 +66,6 @@ public class TaskDBImplementation implements ITaskDAO {
 
         List<Task> list = new ArrayList<>();
         String sql = ((SectionTask) section).getSqlString();
-
         System.out.println("getTasks()[date]: query taken:\n" + sql);
 
         Connection connection = null;
@@ -109,7 +104,6 @@ public class TaskDBImplementation implements ITaskDAO {
 
         SectionEditTaskMenu sect = (SectionEditTaskMenu) section;
         String sql = sect.getSqlString();
-
         System.out.println("addTask(): query taken:\n" + sql);
 
         Connection connection = null;
@@ -122,12 +116,14 @@ public class TaskDBImplementation implements ITaskDAO {
             preparedStatement = connection.prepareStatement(sql);
             if (sect == SectionEditTaskMenu.ADD) {
                 System.out.println("addTask(): in ADD section;");
+
                 preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
                 preparedStatement.setString(SQLQuery.TITLE_POSITION, task.getTitleTask());
                 preparedStatement.setString(SQLQuery.CONTENT_POSITION, task.getContentTask());
                 preparedStatement.setDate(SQLQuery.DATE_POSITION, task.getDateTask());
             } else {
                 System.out.println("addTask(): in EDIT section;");
+
                 preparedStatement.setString(SQLQuery.TITLE_EDIT_POSITION, task.getTitleTask());
                 preparedStatement.setString(SQLQuery.CONTENT_EDIT_POSITION, task.getContentTask());
                 preparedStatement.setDate(SQLQuery.DATE_EDIT_POSITION, task.getDateTask());
@@ -152,7 +148,6 @@ public class TaskDBImplementation implements ITaskDAO {
         System.out.println("\nIn DAO method doEditTask();");
 
         String sql = ((SectionEditTaskMenu) section).getSqlString();
-
         System.out.println("doEditTask(): query taken:\n" + sql);
 
         Connection connection = null;
@@ -170,6 +165,7 @@ public class TaskDBImplementation implements ITaskDAO {
                 preparedStatement.executeUpdate();
             }
             System.out.println("doEditTask(): edit completed;");
+
         } catch (SQLException e) {
             System.out.println("doEditTask(): exception;");
             throw new SQLException();
@@ -181,6 +177,7 @@ public class TaskDBImplementation implements ITaskDAO {
 
     private static List<Task> getListFromResultSet(ResultSet resultSet) throws SQLException {
         System.out.println("\nIn DAO method getListFromResultSet();");
+
         List<Task> list = new ArrayList<>();
         try {
             while (resultSet.next()) {
@@ -204,14 +201,16 @@ public class TaskDBImplementation implements ITaskDAO {
     @Override
     public void moveOldTaskToTrash(User user) throws SQLException {
         System.out.println("\nIn DAO method moveOldTaskToTrash();");
-        String sql = SQLQuery.MOVE_OLD_TASK_TO_RECYCLE_BIN;
 
+        String sql = SQLQuery.MOVE_OLD_TASK_TO_RECYCLE_BIN;
         System.out.println("moveOldTaskToTrash(): query taken:\n" + sql);
+
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
         try {
             System.out.println("moveOldTaskToTrash(): in try block;");
+
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
@@ -248,12 +247,12 @@ public class TaskDBImplementation implements ITaskDAO {
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
-
             System.out.println("getOldTaskDate(): query in statement now is:");
             System.out.println(preparedStatement);
 
             resultSet = preparedStatement.executeQuery();
             System.out.println("getOldTaskDate(): resultSet taken;");
+
             if (resultSet.next()) {
                 dateTask = resultSet.getDate(SQLQuery.NAME_FIELD_DATE);
                 return dateTask;

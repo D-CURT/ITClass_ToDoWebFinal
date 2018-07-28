@@ -28,8 +28,6 @@ public class TaskController extends AbstractController {
         session.setAttribute(Constants.KEY_PARAM_LIST, request.getParameter(Constants.KEY_PARAM_LIST));
         String paramList = (String) session.getAttribute(Constants.KEY_PARAM_LIST);
         String dateTask = request.getParameter(Constants.PARAM_DATE_TASK);
-        System.out.println(dateTask);
-        //Date dateOldTask;
         System.out.println("Task: variables initialized;");
 
         if (paramList == null) {
@@ -51,8 +49,16 @@ public class TaskController extends AbstractController {
             System.out.println("Task: section initialized as - " + paramList.toUpperCase());
 
             if (sectionTask == SectionTask.CHOSEN) {
-                session.setAttribute(Constants.PARAM_LIST_TASK,
-                        taskDAO.getTasks(user, ValidationManager.getValidDate(dateTask), sectionTask));
+                if (dateTask.equals(Constants.KEY_EMPTY))
+                    jumpError(Constants.TASK_JSP, Constants.ERR_INPUT_EMPTY, request, response);
+                else {
+                    Date date = ValidationManager.getValidDate(dateTask);
+                    Date oldDate = taskDAO.getOldTaskDate(user);
+                    if (oldDate != null)
+                        if (date.compareTo(oldDate) <= 0)
+                            jumpError(Constants.TASK_JSP, Constants.ERR_OLD_DATE_CHOSEN, request, response);
+                    session.setAttribute(Constants.PARAM_LIST_TASK, taskDAO.getTasks(user, date, sectionTask));
+                }
             } else {
                 if (paramList.equals("fixed")) session.setAttribute("fixMark", "1");
                 else session.setAttribute("fixMark", null);
@@ -62,9 +68,10 @@ public class TaskController extends AbstractController {
             }
             System.out.println("Task: session attribute set;");
 
-            jump(Constants.TASK_JSP, request, response);
-            System.out.println("Task: jump;");
-
+            if (!response.isCommitted()) {
+                jump(Constants.TASK_JSP, request, response);
+                System.out.println("Task: jump;");
+            }
         } catch (Exception e) {
             System.out.println("Task: exception;");
             e.printStackTrace();
