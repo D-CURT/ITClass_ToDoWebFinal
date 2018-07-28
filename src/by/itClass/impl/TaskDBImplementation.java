@@ -9,6 +9,7 @@ import by.itClass.model.beans.Task;
 import by.itClass.model.beans.User;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TaskDBImplementation implements ITaskDAO {
@@ -44,12 +45,14 @@ public class TaskDBImplementation implements ITaskDAO {
             System.out.println(preparedStatement);
 
             resultSet = preparedStatement.executeQuery();
-
             System.out.println("getTasks(): resultSet taken;");
 
             list.addAll(getListFromResultSet(resultSet));
-
+            for (Task task: list) {
+                System.out.println(task);
+            }
             System.out.println("getTasks(): list taken;");
+
             return list;
         } catch (SQLException e) {
             System.out.println("getTasks(): exception;");
@@ -57,6 +60,45 @@ public class TaskDBImplementation implements ITaskDAO {
         } finally {
             ConnectionManager.closeResultSet(resultSet);
             ConnectionManager.closeStatement(preparedStatement);
+            ConnectionManager.closeConnection(connection);
+        }
+    }
+
+    @Override
+    public List<Task> getTasks(User user, Date date, Enum<?> section) throws Exception {
+        System.out.println("\nIn DAO method getTasks()[date];");
+
+        List<Task> list = new ArrayList<>();
+        String sql = ((SectionTask) section).getSqlString();
+
+        System.out.println("getTasks()[date]: query taken:\n" + sql);
+
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            System.out.println("getTasks()[date]: in try block;");
+
+            connection = ConnectionManager.createConnection();
+            statement = connection.prepareStatement(sql);
+            statement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
+            statement.setDate(SQLQuery.DATE_CHOSEN_POSITION, date);
+            System.out.println("getTasks()[date]: query in statement now is:");
+            System.out.println(statement);
+
+            resultSet = statement.executeQuery();
+            System.out.println("getTasks()[date]: resultSet taken;");
+
+            list.addAll(getListFromResultSet(resultSet));
+            System.out.println("getTasks()[date]: list taken;");
+
+            return list;
+        } catch (SQLException e) {
+            throw new SQLException();
+        } finally {
+            ConnectionManager.closeResultSet(resultSet);
+            ConnectionManager.closeStatement(statement);
             ConnectionManager.closeConnection(connection);
         }
     }
@@ -78,7 +120,6 @@ public class TaskDBImplementation implements ITaskDAO {
 
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
-            System.out.println(preparedStatement);
             if (sect == SectionEditTaskMenu.ADD) {
                 System.out.println("addTask(): in ADD section;");
                 preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());

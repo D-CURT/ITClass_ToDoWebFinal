@@ -40,9 +40,12 @@ public final class SQLQuery {
     public static final int TITLE_POSITION = 2;
     public static final int CONTENT_POSITION = 3;
     public static final int DATE_POSITION = 4;
+
     public static final int TITLE_EDIT_POSITION = 1;
     public static final int CONTENT_EDIT_POSITION = 2;
     public static final int DATE_EDIT_POSITION = 3;
     public static final int ID_EDIT_POSITION = 4;
+
+    public static final int DATE_CHOSEN_POSITION = 2;
 
 }
