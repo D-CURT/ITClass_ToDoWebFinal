@@ -44,9 +44,6 @@ public class TaskDBImplementation implements ITaskDAO {
             System.out.println("getTasks(): resultSet taken;");
 
             list.addAll(getListFromResultSet(resultSet));
-            for (Task task: list) {
-                System.out.println(task);
-            }
             System.out.println("getTasks(): list taken;");
 
             return list;

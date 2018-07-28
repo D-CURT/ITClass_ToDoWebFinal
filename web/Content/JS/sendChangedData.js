@@ -36,5 +36,4 @@ function sendToEditTask(id, titleTask, contentTask) {
     document.body.appendChild(tmp_form);
 
     tmp_form.submit();
-
 }

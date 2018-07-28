@@ -50,7 +50,7 @@ public class TaskController extends AbstractController {
 
             if (sectionTask == SectionTask.CHOSEN) {
                 if (dateTask.equals(Constants.KEY_EMPTY))
-                    jumpError(Constants.TASK_JSP, Constants.ERR_INPUT_EMPTY, request, response);
+                    jumpError(Constants.TASK_JSP, Constants.ERR_DATE_EMPTY, request, response);
                 else {
                     Date date = ValidationManager.getValidDate(dateTask);
                     Date oldDate = taskDAO.getOldTaskDate(user);

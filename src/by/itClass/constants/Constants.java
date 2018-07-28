@@ -24,8 +24,9 @@ public final class Constants {
 
     public static final String ERR_NULL = "Object is null";
     public static final String ERR_EMPTY = "Login or password are empty";
-    public static final String ERR_LOGIN = "Incorrect login or password";
     public static final String ERR_INPUT_EMPTY = "Field is empty";
+    public static final String ERR_DATE_EMPTY = "Choose a date";
+    public static final String ERR_LOGIN = "Incorrect login or password";
     public static final String ERR_REG_LOGIN = "The login already in use.";
     public static final String ERR_OLD_DATE_CHOSEN = "Choose current date or later";
 
