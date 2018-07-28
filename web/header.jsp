@@ -24,6 +24,9 @@
                 </c:otherwise>
             </c:choose>
         </th>
+        <th style="padding: 10px 0 0 50px" <c:if test="${user.login == null}">hidden</c:if>>
+            <%@include file="searchTask.jsp"%>
+        </th>
         <th>
             <a style="padding-left: 205px"
                <c:if test="${user.login != null}">hidden</c:if>
