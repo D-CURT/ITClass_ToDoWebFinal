@@ -20,7 +20,6 @@ public final class SQLQuery {
     public static final String NAME_FIELD_RECYCLE = "flagRecycle";
 
     public static final String INSERT_USERS = "INSERT INTO user (login, password, firstName, eMail) VALUES (?, ?, ?, ?)";
-    public static final String WHERE_TASK_ID = "AND id=?";
     public static final String ADD_TASK = "INSERT INTO task (idUser, titleTask, contentTask, dateTask) VALUES ((SELECT id FROM user WHERE login=?),?,?,?)";
     public static final String EDIT_TASK = "UPDATE task SET flagFix = 0, flagRecycle = 0, titleTask=?, contentTask=?, dateTask=? WHERE id=?";
     public static final String FIX_TASK = "UPDATE task SET flagFix=1 WHERE id=?";
