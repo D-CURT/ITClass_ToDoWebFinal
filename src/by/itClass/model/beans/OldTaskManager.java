@@ -4,7 +4,7 @@ import by.itClass.interfaces.ITaskDAO;
 import java.sql.Date;
 
 public class OldTaskManager {
-    private static volatile OldTaskManager instance;
+    /*private static volatile OldTaskManager instance;
     private volatile Date date;
 
     private OldTaskManager(Date date) {
@@ -19,7 +19,7 @@ public class OldTaskManager {
         try {
             System.out.println("getInstance(): in try block;");
 
-            dateTask = taskDAO.getOldTaskDate(user);
+            //dateTask = getCurrentDate();
             System.out.println("getInstance(): dateTask initialized;");
 
             synchronized (OldTaskManager.class) {
@@ -32,7 +32,7 @@ public class OldTaskManager {
                     taskDAO.moveOldTaskToTrash(user);
                     System.out.println("getInstance(): old task moved;");
 
-                    return instance = localInstance = new OldTaskManager(dateTask);
+                    //return instance = localInstance = new OldTaskManager(dateTask);
                 } else if (dateTask.compareTo(instance.date) == 1) {
                     System.out.println("getInstance(): instance is not null;");
 
@@ -51,5 +51,5 @@ public class OldTaskManager {
         return "OldTaskManager{" +
                 "date=" + date +
                 '}';
-    }
+    }*/
 }

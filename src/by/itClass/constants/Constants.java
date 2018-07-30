@@ -1,6 +1,9 @@
 package by.itClass.constants;
 
+import java.text.SimpleDateFormat;
+
 public final class Constants {
+    public static final SimpleDateFormat GET_DATE_FORMAT = new SimpleDateFormat("yyyy:MM:dd");
     //JSP constants
     public static final String ERR_ATR_MESSAGE = "errorMessage";
 

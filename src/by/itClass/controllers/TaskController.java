@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import by.itClass.constants.Constants;
 import by.itClass.factory.TaskFactory;
@@ -21,6 +23,7 @@ public class TaskController extends AbstractController {
 
     @Override
     public void performTask(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
         System.out.println("\nIn TaskController;");
 
         HttpSession session = request.getSession();
@@ -40,7 +43,7 @@ public class TaskController extends AbstractController {
             ITaskDAO taskDAO = TaskFactory.getITaskDAO();
             System.out.println("Task: DAO initialized;");
 
-            taskDAO.moveOldTaskToTrash(user);
+            taskDAO.moveOldTaskToRecycle_bin(user);
 
             Enum<?> sectionTask = TaskFactory.getKindSectionTask(paramList);
             System.out.println("Task: section initialized as - " + paramList.toUpperCase());
@@ -50,9 +53,9 @@ public class TaskController extends AbstractController {
                     jumpError(Constants.TASK_JSP, Constants.ERR_DATE_EMPTY, request, response);
                 else {
                     Date date = ValidationManager.getValidDate(dateTask);
-                    Date oldDate = taskDAO.getOldTaskDate(user);
-                    if (oldDate != null)
-                        if (date.compareTo(oldDate) <= 0)
+                    Date currDate = ValidationManager.getCurrentDate();
+                    if (currDate != null)
+                        if (date.compareTo(currDate) < 0)
                             jumpError(Constants.TASK_JSP, Constants.ERR_OLD_DATE_CHOSEN, request, response);
                     session.setAttribute(Constants.PARAM_LIST_TASK, taskDAO.getTasks(user, date, sectionTask));
                 }

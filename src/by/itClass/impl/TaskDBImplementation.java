@@ -196,69 +196,30 @@ public class TaskDBImplementation implements ITaskDAO {
     }
 
     @Override
-    public void moveOldTaskToTrash(User user) throws SQLException {
-        System.out.println("\nIn DAO method moveOldTaskToTrash();");
+    public void moveOldTaskToRecycle_bin(User user) throws SQLException {
+        System.out.println("\nIn DAO method moveOldTaskToRecycle_bin();");
 
         String sql = SQLQuery.MOVE_OLD_TASK_TO_RECYCLE_BIN;
-        System.out.println("moveOldTaskToTrash(): query taken:\n" + sql);
+        System.out.println("moveOldTaskToRecycle_bin(): query taken:\n" + sql);
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
         try {
-            System.out.println("moveOldTaskToTrash(): in try block;");
+            System.out.println("moveOldTaskToRecycle_bin(): in try block;");
 
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
 
-            System.out.println("moveOldTaskToTrash(): query in statement now is:");
+            System.out.println("moveOldTaskToRecycle_bin(): query in statement now is:");
             System.out.println(preparedStatement);
 
             preparedStatement.execute();
         } catch (SQLException e) {
-            System.out.println("moveOldTaskToTrash(): exception;");
+            System.out.println("moveOldTaskToRecycle_bin(): exception;");
             throw new SQLException();
         } finally {
-            ConnectionManager.closeStatement(preparedStatement);
-            ConnectionManager.closeConnection(connection);
-        }
-    }
-
-    @Override
-    public Date getOldTaskDate(User user) throws SQLException {
-        System.out.println("\nIn DAO method getOldTaskDate();");
-
-        String sql = SQLQuery.SELECT_LIST_TASK + SQLQuery.WHERE_OLD_TASK;
-
-        System.out.println("getOldTaskDate(): query taken:\n" + sql);
-
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-
-        try {
-            System.out.println("getOldTaskDate(): in try block;");
-
-            Date dateTask = null;
-            connection = ConnectionManager.createConnection();
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(SQLQuery.LOGIN_POSITION, user.getLogin());
-            System.out.println("getOldTaskDate(): query in statement now is:");
-            System.out.println(preparedStatement);
-
-            resultSet = preparedStatement.executeQuery();
-            System.out.println("getOldTaskDate(): resultSet taken;");
-
-            if (resultSet.next()) {
-                dateTask = resultSet.getDate(SQLQuery.NAME_FIELD_DATE);
-                return dateTask;
-            } else return dateTask;
-        } catch (SQLException e) {
-            System.out.println("getOldTaskDate(): exception;");
-            throw new SQLException();
-        } finally {
-            ConnectionManager.closeResultSet(resultSet);
             ConnectionManager.closeStatement(preparedStatement);
             ConnectionManager.closeConnection(connection);
         }

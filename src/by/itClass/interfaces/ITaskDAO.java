@@ -15,7 +15,7 @@ public interface ITaskDAO {
 
     void doEditTask(String[] arrayId, Enum<?> section) throws Exception;
 
-    void moveOldTaskToTrash(User user) throws Exception;
+    void moveOldTaskToRecycle_bin(User user) throws Exception;
 
-    Date getOldTaskDate(User user) throws Exception;
+
 }
