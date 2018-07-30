@@ -124,7 +124,7 @@ public class TaskDBImplementation implements ITaskDAO {
                 preparedStatement.setString(SQLQuery.TITLE_EDIT_POSITION, task.getTitleTask());
                 preparedStatement.setString(SQLQuery.CONTENT_EDIT_POSITION, task.getContentTask());
                 preparedStatement.setDate(SQLQuery.DATE_EDIT_POSITION, task.getDateTask());
-                preparedStatement.setInt(SQLQuery.ID_EDIT_POSITION, task.getId());
+                preparedStatement.setInt(SQLQuery.ID_EDIT_POSITION, Integer.parseInt(task.getId()));
                 System.out.println(preparedStatement);
             }
             System.out.println("addTask(): query in statement now is:");
@@ -178,7 +178,7 @@ public class TaskDBImplementation implements ITaskDAO {
         List<Task> list = new ArrayList<>();
         try {
             while (resultSet.next()) {
-                int id = resultSet.getInt(SQLQuery.NAME_FIELD_ID);
+                String id = resultSet.getString(SQLQuery.NAME_FIELD_ID);
                 String titleTask = resultSet.getString(SQLQuery.NAME_FIELD_TITLE);
                 String contentTask = resultSet.getString(SQLQuery.NAME_FIELD_CONTENT);
                 Date dateTask = resultSet.getDate(SQLQuery.NAME_FIELD_DATE);

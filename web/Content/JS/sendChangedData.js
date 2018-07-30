@@ -30,8 +30,8 @@ function sendToEditTask(id, titleTask, contentTask) {
     tmp_form.action = "editTask.jsp";
     tmp_form.method = "post";
 
-    tmp_form.appendChild(tmp_titleTask);
     tmp_form.appendChild(tmp_contentTask);
+    tmp_form.appendChild(tmp_titleTask);
     tmp_form.appendChild(tmp_IDTask);
     document.body.appendChild(tmp_form);
 

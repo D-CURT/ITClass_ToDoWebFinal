@@ -3,7 +3,7 @@ package by.itClass.model.beans;
 import java.sql.Date;
 
 public class Task {
-    private int id;
+    private String id;
     private String titleTask;
     private String contentTask;
     private Date dateTask;
@@ -12,7 +12,7 @@ public class Task {
 
     public Task() {}
 
-    public Task(int id, String titleTask, String contentTask, Date dateTask, int flagFix, int flagRecycle) {
+    public Task(String id, String titleTask, String contentTask, Date dateTask, int flagFix, int flagRecycle) {
         this.id = id;
         this.titleTask = titleTask;
         this.contentTask = contentTask;
@@ -21,7 +21,7 @@ public class Task {
         this.flagRecycle = flagRecycle;
     }
 
-    public Task(int id, String titleTask, String contentTask, Date dateTask) {
+    public Task(String id, String titleTask, String contentTask, Date dateTask) {
         this.id = id;
         this.titleTask = titleTask;
         this.contentTask = contentTask;
@@ -34,22 +34,22 @@ public class Task {
         this.dateTask = dateTask;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public void setId(String id) throws NumberFormatException {
+    /*public void setId(String id) throws NumberFormatException {
         try {
             this.id = Integer.parseInt(id);
         } catch (NumberFormatException e) {
             throw new NumberFormatException();
         }
 
-    }
+    }*/
 
     public String getTitleTask() {
         return titleTask;
