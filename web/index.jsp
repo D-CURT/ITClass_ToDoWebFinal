@@ -18,11 +18,11 @@
       </c:if>
       <div class="content">
           <p>
-              Hello, <b>friend</b>! My name is <b>Aleksei</b>. I glad to welcome you here.<br>
+              Hello, <b>friend</b>! I glad to welcome you here.<br>
               The application is realizing a daily calendar functionality:
           </p>
           <ul>
-              <li>Making new tasks for days on your choice;</li>
+              <li>You can make new tasks for days on your choice;</li>
               <li>An any task you can edit;</li>
               <li>Fix / unfix it;</li>
               <li>Move it to recycle bin;</li>
@@ -31,13 +31,8 @@
           </ul>
           <p>Couple comments concerning some application`s functions:</p>
           <ul>
-              <li>
-                  <p>You can search tasks by a <b>current date or later</b> only.</p>
-              </li>
-              <li>
-                  <p>All tasks, that you can`t complete in time and did`t fix it,
-                      will move to <b>recycle bin</b> automatically;</p>
-              </li>
+              <li><p>You can search tasks by a date. And you have to pick <b>current date or later</b>, otherwise you will get nothing;</p></li>
+              <li><p>All tasks, that you can`t complete in time and did`t fix it, will move to <b>recycle bin</b> automatically.</p></li>
           </ul>
       </div>
       <hr>
