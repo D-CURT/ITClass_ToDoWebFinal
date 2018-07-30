@@ -42,9 +42,6 @@ public class TaskController extends AbstractController {
 
             taskDAO.moveOldTaskToTrash(user);
 
-            /*OldTaskManager manager = OldTaskManager.getInstance(user, taskDAO);
-            System.out.println("Task: oldTaskManager initialized as:\n" + manager);*/
-
             Enum<?> sectionTask = TaskFactory.getKindSectionTask(paramList);
             System.out.println("Task: section initialized as - " + paramList.toUpperCase());
 
