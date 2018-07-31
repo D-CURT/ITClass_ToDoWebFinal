@@ -1,3 +1,5 @@
+
+
 function sendChangedData(flag) {
     document.next.paramList.value = flag;
     document.next.submit();
@@ -5,7 +7,6 @@ function sendChangedData(flag) {
 
 function sendEditForm(flag) {
     document.editForm.paramEdit.value = flag;
-
     document.editForm.submit();
 }
 
@@ -13,17 +14,17 @@ function sendToEditTask(id, titleTask, contentTask) {
     var tmp_titleTask = document.createElement("input");
     tmp_titleTask.type = "hidden";
     tmp_titleTask.name = "titleTask";
-    tmp_titleTask.value = titleTask;
+    tmp_titleTask.value = String(titleTask);
 
     var tmp_contentTask = document.createElement("input");
     tmp_contentTask.type = "hidden";
     tmp_contentTask.name = "contentTask";
-    tmp_contentTask.value = contentTask;
+    tmp_contentTask.value = String(contentTask);
 
     var tmp_IDTask = document.createElement("input");
     tmp_IDTask.type = "hidden";
     tmp_IDTask.name = "id";
-    tmp_IDTask.value = id;
+    tmp_IDTask.value = String(id);
 
     var tmp_form = document.createElement("form");
     tmp_form.name = "toJSPForm";

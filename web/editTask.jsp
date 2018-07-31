@@ -6,8 +6,8 @@
     <title>Edit Task</title>
 </head>
 <body>
-<form name="editTaskForm" method="post" action='<c:url value="/edit"/>'>
-    <input type="hidden" name="id" value="${param.id}">
+<form name="editTaskForm" method="post" action='edit'>
+    <input type="hidden" name="<%=Constants.PARAM_ID_TASK%>" value="${param.id}">
     <input type="hidden" name="<%=Constants.KEY_PARAM_EDIT%>" value="edit">
     <table>
         <tr>

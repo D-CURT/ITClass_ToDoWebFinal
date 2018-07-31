@@ -6,7 +6,7 @@
     <script type="text/javascript" src="Content/JS/sendChangedData.js"></script>
 </head>
 <body>
-    <form action="<c:url value='/edit'/>" name="editForm" method="POST">
+    <form action="edit>" name="editForm" method="get">
         <input type="hidden" name="<%=Constants.KEY_PARAM_EDIT%>" value="">
         <c:choose>
             <c:when test="${not empty listTask}">
@@ -18,7 +18,7 @@
                             <td><c:out value="${task.titleTask}"></c:out></td>
                             <td><c:out value="${task.contentTask}"></c:out></td>
                             <td><c:out value="${task.dateTask}"></c:out></td>
-                            <td><input type="button" value="Edit" onclick="JavaScript:sendToEditTask(${task.id},${task.titleTask},${task.contentTask})"></td>
+                            <td><input type="button" value="Edit" onclick="sendToEditTask(${task.id},${task.titleTask},${task.contentTask})"></td>
                         </tr>
                     </c:forEach>
                 </table>
