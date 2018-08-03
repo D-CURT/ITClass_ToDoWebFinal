@@ -1,14 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import = "by.itClass.constants.Constants" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+<%--<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>--%>
 <html>
 <head>
     <title>Task Menu</title>
     <script type="text/javascript" src="Content/JS/sendChangedData.js"></script>
 </head>
 <body>
-<form action="task" name="next" value="" method="POST">
-    <input type="hidden" name="<%= Constants.KEY_PARAM_LIST%>" value="">
+<form action="task" name="next" method="POST">
+    <input type="hidden" name="<%=Constants.KEY_PARAM_LIST%>" value="">
     <table>
         <tr>
             <td><a href="JavaScript:sendChangedData('today')">Today</a></td>

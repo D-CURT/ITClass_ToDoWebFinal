@@ -16,7 +16,7 @@ public final class Constants {
     public static final String PARAM_TITLE_TASK = "titleTask";
     public static final String PARAM_CONTENT_TASK = "contentTask";
     public static final String PARAM_DATE_TASK = "dateTask";
-    public static final String PARAM_ID_TASK = "id";
+    public static final String PARAM_ID_TASK = "idTask";
 
     //Application constants
     public static final String INDEX_JSP = "/index.jsp";
@@ -36,6 +36,7 @@ public final class Constants {
     public static final String KEY_USER = "user";
     public static final String KEY_PARAM_LIST = "paramList";
     public static final String KEY_PARAM_EDIT = "paramEdit";
+    public static final String KEY_PARAM_VIEW = "view";
     public static final String KEY_PARAM_EDIT_CHECK = "checkEditTask";
 
     public static final String DRIVER_NAME = "org.gjt.mm.mysql.Driver";
