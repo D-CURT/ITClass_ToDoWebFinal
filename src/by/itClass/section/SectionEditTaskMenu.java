@@ -10,6 +10,7 @@ public enum SectionEditTaskMenu {
     RECYCLE(SQLQuery.MOVE_TASK_TO_RECYCLE_BIN),
     REMOVE(SQLQuery.REMOVE_TASK),
     RESTORE(SQLQuery.RESTORE_TASK),
+    VIEW(SQLQuery.SELECT_TASK),
     OTHER("");
 
     private String sqlString;

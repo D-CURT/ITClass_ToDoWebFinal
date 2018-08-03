@@ -5,6 +5,7 @@ public final class SQLQuery {
     public static final String SELECT_FOUND_LOGIN = "SELECT * FROM User WHERE login=?";
 
     public static final String SELECT_LIST_TASK = "SELECT * FROM task WHERE idUSER = (SELECT id FROM user WHERE login=?) ";
+    public static final String SELECT_TASK = "SELECT * FROM task WHERE id=?";
     public static final String WHERE_TODAY_LIST_TASK = "AND dateTask = curdate() AND flagFix = 0 AND flagRecycle = 0";
     public static final String WHERE_TOMORROW_LIST_TASK = "AND dateTask = DATE_ADD(curdate(), INTERVAL 1 DAY) AND flagFix = 0 AND flagRecycle = 0";
     public static final String WHERE_SOMEDAY_LIST_TASK = "AND dateTask > DATE_ADD(curdate(), INTERVAL 1 DAY) AND flagFix = 0 AND flagRecycle = 0";
