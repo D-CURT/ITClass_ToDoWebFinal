@@ -33,6 +33,7 @@
           <ul>
               <li><p>You can search tasks by a date. And you have to pick <b>current date or later</b>, otherwise you will get nothing;</p></li>
               <li><p>All tasks, that you can`t complete in time and did`t fix it, will move to <b>recycle bin</b> automatically.</p></li>
+              <li><p>When you are viewing particular task, <b>all changes</b> on the page will save, when you will press <b>Back</b> button</p></li>
           </ul>
       </div>
       <hr>
