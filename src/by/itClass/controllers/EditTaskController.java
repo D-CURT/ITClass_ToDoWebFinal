@@ -67,10 +67,12 @@ public class EditTaskController extends AbstractController {
             } else {
                 String[] arrayId;
                 if (section == SectionEditTaskMenu.VIEW) {
-                    arrayId = new String[1];
-                    arrayId[0] = request.getParameter(Constants.PARAM_ID_TASK);
-                    System.out.println("Edit: idTask = " + arrayId[0]);
 
+                    String idTask = request.getParameter(Constants.PARAM_ID_TASK);
+                    System.out.println("Edit: idTask = " + idTask);
+
+                    session.setAttribute(Constants.KEY_TASK, taskDAO.getTask(idTask, section));
+                    jump(Constants.TASK_EDIT_JSP, request, response);
                 } else {
                     arrayId = request.getParameterValues(Constants.KEY_PARAM_EDIT_CHECK);
                     System.out.println("Edit: arrayID initialized;");

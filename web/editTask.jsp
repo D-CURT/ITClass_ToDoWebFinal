@@ -16,7 +16,7 @@
         </tr>
         <tr>
             <td>
-                <input type="text" name="<%=Constants.PARAM_TITLE_TASK%>" value="${param.titleTask}">
+                <input type="text" name="<%=Constants.PARAM_TITLE_TASK%>" value="${task.titleTask}">
             </td>
             <td>
                 <input type="text" name="<%=Constants.PARAM_CONTENT_TASK%>" value="${task.contentTask}">

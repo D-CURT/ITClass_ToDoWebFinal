@@ -13,6 +13,51 @@ import java.util.Collections;
 import java.util.List;
 
 public class TaskDBImplementation implements ITaskDAO {
+
+    @Override
+    public Task getTask(String id, Enum<?> section) throws Exception {
+        System.out.println("\nIn DAO method getTask();");
+        Task task;
+
+        String sql = ((SectionEditTaskMenu) section).getSqlString();
+        System.out.println("getTask(): query taken:\n" + sql);
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            System.out.println("getTask(): in try block;");
+
+            connection = ConnectionManager.createConnection();
+            System.out.println("getTask(): connection taken;");
+
+            preparedStatement = connection.prepareStatement(sql);
+            System.out.println("getTask(): statement taken;");
+
+            preparedStatement.setString(SQLQuery.ID_TASK_POSITION, id);
+            System.out.println("getTask(): id in query set;");
+
+            System.out.println("getTask(): query in statement now is:");
+            System.out.println(preparedStatement);
+
+            resultSet = preparedStatement.executeQuery();
+            System.out.println("getTask(): resultSet taken;");
+
+            task = getListFromResultSet(resultSet).get(0);
+            System.out.println("getTask(): task is taken;");
+
+            return task;
+        } catch (SQLException e) {
+            System.out.println("getTask(): exception;");
+            throw new SQLException();
+        } finally {
+            ConnectionManager.closeResultSet(resultSet);
+            ConnectionManager.closeStatement(preparedStatement);
+            ConnectionManager.closeConnection(connection);
+        }
+    }
+
     @Override
     public List<Task> getTasks(User user, Enum<?> section) throws Exception {
         System.out.println("\nIn DAO method getTasks();");

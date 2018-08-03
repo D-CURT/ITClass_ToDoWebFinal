@@ -7,6 +7,8 @@ import java.sql.Date;
 import java.util.List;
 
 public interface ITaskDAO {
+    Task getTask(String id, Enum<?> section) throws Exception;
+
     List<Task> getTasks(User user, Enum<?> section) throws Exception;
 
     List<Task> getTasks(User user, Date date, Enum<?> section) throws Exception;

@@ -11,6 +11,7 @@ public final class Constants {
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_FIRST_NAME = "firstName";
     public static final String KEY_EMAIL = "email";
+    public static final String KEY_TASK = "task";
 
     public static final String PARAM_LIST_TASK = "listTask";
     public static final String PARAM_TITLE_TASK = "titleTask";
@@ -23,6 +24,7 @@ public final class Constants {
     public static final String TASK_JSP = "/task.jsp";
     public static final String TASK_CONTROLLER = "/task";
     public static final String TASK_ADD_JSP = "/addTask.jsp";
+    public static final String TASK_EDIT_JSP = "/editTask.jsp";
 
     public static final String ERR_NULL = "Object is null";
     public static final String ERR_EMPTY = "Login or password are empty";
