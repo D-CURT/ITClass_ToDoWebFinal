@@ -12,7 +12,7 @@
         <c:choose>
             <c:when test="${not empty listTask}">
                 <table border="1px">
-                    <tr><td align="center">*</td><td>Title</td><td>Content</td><td>Date</td><td></td></tr>
+                    <tr><td align="center">*</td><td>Title</td><td>Date</td><td></td></tr>
                     <c:forEach items = "${listTask}" var = "task">
                         <tr>
                             <td><input type="checkbox" name="<%=Constants.KEY_PARAM_EDIT_CHECK%>" value="${task.id}"></td>
