@@ -39,8 +39,8 @@ function sendToEditTask(id, titleTask, contentTask) {
     tmp_form.submit();
 }
 
-function sendViewData(flag) {
-   /* document.editTaskForm.paramEdit.value = flag;*/
+function sendViewData(id, flag) {
     document.editForm.paramEdit.value = flag;
+    document.editForm.idTask.value = id;
     document.editForm.submit();
 }
