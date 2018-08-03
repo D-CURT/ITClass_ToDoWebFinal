@@ -17,10 +17,8 @@
                         <tr>
                             <td><input type="checkbox" name="<%=Constants.KEY_PARAM_EDIT_CHECK%>" value="${task.id}"></td>
                             <td><c:out value="${task.titleTask}"></c:out></td>
-                            <td><c:out value="${task.contentTask}"></c:out></td>
                             <td><c:out value="${task.dateTask}"></c:out></td>
-                            <td><input type="button" value="View" onclick="JavaScript:sendViewData(${task.id},'view')"></td>
-                            <%--<script type="text/javascript" src="Content/JS/sendChangedData.js"></script>--%>
+                            <td><input type="button" value="View/Edit" onclick="JavaScript:sendViewData(${task.id},'view')"></td>
                         </tr>
                     </c:forEach>
                 </table>

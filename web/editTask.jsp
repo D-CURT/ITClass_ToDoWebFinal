@@ -7,8 +7,8 @@
     <script type="text/javascript" src="Content/JS/sendChangedData.js"></script>
 </head>
 <body>
-<form action="edit" name="editTaskForm" method="get" >
-    <input type="hidden" name="<%=Constants.PARAM_ID_TASK%>" value="${param.id}">
+<form action="edit" name="editTaskForm" method="post" >
+    <input type="hidden" name="<%=Constants.PARAM_ID_TASK%>" value="${task.id}">
     <input type="hidden" name="<%=Constants.KEY_PARAM_EDIT%>" value="">
     <table>
         <tr>
@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <td>
-                <input type="submit" value="Edit Task">
+                <input type="submit" value="Back" onclick="sendEditTaskForm('edit')">
             </td>
         </tr>
     </table>

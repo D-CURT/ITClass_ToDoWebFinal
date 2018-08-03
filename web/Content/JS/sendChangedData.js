@@ -10,7 +10,12 @@ function sendEditForm(flag) {
     document.editForm.submit();
 }
 
-function sendToEditTask(id, titleTask, contentTask) {
+function sendEditTaskForm(flag) {
+    document.editTaskForm.paramEdit.value = flag;
+    document.editTaskForm.submit();
+}
+
+/*function sendToEditTask(id, titleTask, contentTask) {
     var tmp_titleTask = document.createElement("input");
     tmp_titleTask.type = "hidden";
     tmp_titleTask.name = "titleTask";
@@ -37,7 +42,7 @@ function sendToEditTask(id, titleTask, contentTask) {
     document.body.appendChild(tmp_form);
 
     tmp_form.submit();
-}
+}*/
 
 function sendViewData(id, flag) {
     document.editForm.paramEdit.value = flag;
