@@ -65,13 +65,21 @@ public class EditTaskController extends AbstractController {
                     }
                 }
             } else {
-                String[] arrayId = request.getParameterValues(Constants.KEY_PARAM_EDIT_CHECK);
-                System.out.println("Edit: arrayID initialized;");
-                if (arrayId != null) {
+                String[] arrayId;
+                if (section == SectionEditTaskMenu.VIEW) {
+                    arrayId = new String[1];
+                    arrayId[0] = request.getParameter(Constants.PARAM_ID_TASK);
+                    System.out.println("Edit: idTask = " + arrayId[0]);
 
-                    taskDAO.doEditTask(arrayId, section);
-                    System.out.println("Edit: task changed;");
-                } else jumpError(Constants.TASK_JSP, "Choose task and try again", request, response);
+                } else {
+                    arrayId = request.getParameterValues(Constants.KEY_PARAM_EDIT_CHECK);
+                    System.out.println("Edit: arrayID initialized;");
+                    if (arrayId != null) {
+
+                        taskDAO.doEditTask(arrayId, section);
+                        System.out.println("Edit: task changed;");
+                    } else jumpError(Constants.TASK_JSP, "Choose task and try again", request, response);
+                }
             }
             jump(Constants.TASK_CONTROLLER, request, response);
             System.out.println("Edit: jump;");
